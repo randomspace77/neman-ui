@@ -22,27 +22,27 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 9.0.6
+          version: 10
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
-      - run: pnpm install --filter=neman-ui...
+      - run: pnpm install
 
-      - run: pnpm --filter=neman-ui build
+      - run: pnpm build
         env:
           GITHUB_PAGES: "true"
           NEXT_PUBLIC_APP_URL: https://neman-ui.github.io/neman-ui
 
       - name: Add .nojekyll
-        run: touch apps/neman-ui/out/.nojekyll
+        run: touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/neman-ui/out
+          path: out
 
   deploy:
     environment:

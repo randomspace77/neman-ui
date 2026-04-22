@@ -1,7 +1,3 @@
-# Reference repos - do not commit
-ai-elements/
-shadcn-ui/
-
 # Dependencies
 node_modules/
 
@@ -15,6 +11,19 @@ dist/
 .env.local
 .env*.local
 
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
 # OS
 .DS_Store
 Thumbs.db
@@ -25,8 +34,6 @@ Thumbs.db
 *.swp
 *.swo
 
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# Reference repos - do not commit
+ai-elements/
+shadcn-ui/
