@@ -98,6 +98,7 @@ function ChatAttachment({
       {/* Remove button */}
       {onRemove && (
         <button
+          aria-label={`Remove ${name}`}
           onClick={(e) => {
             e.stopPropagation()
             onRemove()

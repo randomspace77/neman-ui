@@ -111,6 +111,7 @@ export {
 } from "./chat-tool-call"
 export type { ToolState } from "./chat-tool-call"
 export { ChatCodeBlock } from "./chat-code-block"
+export { ChatMarkdown } from "./chat-markdown"
 export {
   ChatPromptInput,
   ChatPromptInputTextarea,

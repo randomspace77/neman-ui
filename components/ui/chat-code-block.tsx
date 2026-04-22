@@ -47,6 +47,9 @@ function ChatCodeBlock({
       )}
       {...props}
     >
+      <div aria-live="polite" className="sr-only">
+        {copied ? "Code copied to clipboard" : ""}
+      </div>
       {/* Header */}
       {(language || filename) && (
         <div className="flex items-center justify-between border-b border-[var(--code-surface-foreground)]/8 px-4 py-2.5">
@@ -59,6 +62,7 @@ function ChatCodeBlock({
           </div>
           <button
             onClick={handleCopy}
+            aria-label={copied ? "Copied" : "Copy code"}
             className={cn(
               "inline-flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-label-primary transition-all duration-200",
               copied
@@ -90,6 +94,7 @@ function ChatCodeBlock({
       {!language && !filename && (
         <button
           onClick={handleCopy}
+          aria-label={copied ? "Copied" : "Copy code"}
           className={cn(
             "absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-label-primary transition-all duration-200",
             copied

@@ -35,6 +35,9 @@ function ChatConversation({
 
   return (
     <div
+      role="log"
+      aria-label="Chat conversation"
+      aria-live="polite"
       data-slot="chat-conversation"
       ref={containerRef}
       onScroll={handleScroll}
@@ -52,6 +55,7 @@ function ChatConversation({
 
       {!isAtBottom && (
         <button
+          aria-label="Scroll to bottom"
           onClick={scrollToBottom}
           className={cn(
             "absolute bottom-4 left-1/2 -translate-x-1/2",
@@ -98,6 +102,7 @@ function ChatConversationEmpty({
 }) {
   return (
     <div
+      role="status"
       data-slot="chat-conversation-empty"
       className={cn(
         "flex flex-1 flex-col items-center justify-center gap-4 py-20 text-center",

@@ -31,9 +31,10 @@ function ChatBranch({
       <button
         onClick={() => onBranchChange?.(currentBranch - 1)}
         disabled={currentBranch === 0}
+        aria-label="Previous branch"
         className="inline-flex size-7 items-center justify-center rounded-full text-muted-foreground transition-all duration-200 hover:bg-fill-subtle hover:text-foreground active:scale-95 disabled:opacity-25 disabled:pointer-events-none"
       >
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M9 3L5 7L9 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
@@ -43,9 +44,10 @@ function ChatBranch({
       <button
         onClick={() => onBranchChange?.(currentBranch + 1)}
         disabled={currentBranch >= branchCount - 1}
+        aria-label="Next branch"
         className="inline-flex size-7 items-center justify-center rounded-full text-muted-foreground transition-all duration-200 hover:bg-fill-subtle hover:text-foreground active:scale-95 disabled:opacity-25 disabled:pointer-events-none"
       >
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>

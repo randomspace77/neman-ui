@@ -166,7 +166,7 @@ function ChatPromptInputSubmit({
       )}
       {...props}
     >
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path
           d="M3 8L13 3L8 13L7 9L3 8Z"
           fill="currentColor"
@@ -190,6 +190,7 @@ function ChatPromptInputStop({
     <button
       data-slot="chat-prompt-input-stop"
       type="button"
+      aria-label="Stop generating"
       onClick={onClick}
       className={cn(
         "inline-flex size-8 items-center justify-center rounded-full bg-destructive text-destructive-foreground",
@@ -199,7 +200,7 @@ function ChatPromptInputStop({
       )}
       {...props}
     >
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">
         <rect x="2" y="2" width="10" height="10" rx="2.5" />
       </svg>
     </button>

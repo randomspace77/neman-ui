@@ -56,7 +56,8 @@ function ChatReasoning({
       {...props}
     >
       <button
-        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        onClick={() => setOpen((o: boolean) => !o)}
         className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-150 hover:bg-fill-subtle/60 rounded-[22px]"
       >
         <svg
@@ -64,6 +65,7 @@ function ChatReasoning({
           height="16"
           viewBox="0 0 16 16"
           fill="none"
+          aria-hidden="true"
           className={cn(
             "shrink-0 text-brand/60 transition-transform duration-200",
             open && "rotate-90 text-brand"

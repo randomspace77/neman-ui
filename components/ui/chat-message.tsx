@@ -15,6 +15,8 @@ function ChatMessage({
 }) {
   return (
     <div
+      role="article"
+      aria-label={from === "user" ? "Your message" : "Assistant message"}
       data-slot="chat-message"
       data-from={from}
       className={cn(
@@ -37,6 +39,8 @@ function ChatMessageAvatar({
 }: React.ComponentProps<"div">) {
   return (
     <div
+      role="img"
+      aria-hidden="true"
       data-slot="chat-message-avatar"
       className={cn(
         "flex size-8 shrink-0 items-center justify-center rounded-full",
@@ -123,6 +127,7 @@ function ChatMessageAction({
 }: React.ComponentProps<"button">) {
   return (
     <button
+      type="button"
       data-slot="chat-message-action"
       className={cn(
         "inline-flex size-7 items-center justify-center rounded-[10px] text-muted-foreground transition-all duration-200 hover:bg-fill-subtle hover:text-foreground active:scale-95",

@@ -7,13 +7,28 @@ import { cn } from "@/lib/utils"
 
 function ChatSources({
   count,
+  open: openProp,
+  defaultOpen,
+  onOpenChange,
   className,
   children,
   ...props
 }: React.ComponentProps<"div"> & {
   count?: number
+  open?: boolean
+  defaultOpen?: boolean
+  onOpenChange?: (open: boolean) => void
 }) {
-  const [open, setOpen] = React.useState(false)
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen ?? false)
+  const open = openProp ?? internalOpen
+  const setOpen = React.useCallback(
+    (value: boolean | ((prev: boolean) => boolean)) => {
+      const next = typeof value === "function" ? value(open) : value
+      setInternalOpen(next)
+      onOpenChange?.(next)
+    },
+    [open, onOpenChange]
+  )
 
   return (
     <div
@@ -22,7 +37,8 @@ function ChatSources({
       {...props}
     >
       <button
-        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        onClick={() => setOpen((o: boolean) => !o)}
         className="flex w-full items-center gap-2.5 px-4 py-2.5 text-left transition-colors duration-150 hover:bg-fill-subtle/60 rounded-[22px]"
       >
         <svg
@@ -30,6 +46,7 @@ function ChatSources({
           height="14"
           viewBox="0 0 14 14"
           fill="none"
+          aria-hidden="true"
           className="shrink-0 text-brand/70"
         >
           <path
@@ -47,6 +64,7 @@ function ChatSources({
           height="14"
           viewBox="0 0 14 14"
           fill="none"
+          aria-hidden="true"
           className={cn(
             "ml-auto shrink-0 text-muted-foreground transition-transform duration-300",
             open && "rotate-180"
@@ -101,7 +119,7 @@ function ChatSource({
       <span className="truncate font-medium text-foreground">{title}</span>
       {url && (
         <span className="ml-auto truncate text-muted-foreground">
-          {new URL(url).hostname}
+          {(() => { try { return new URL(url).hostname } catch { return url } })()}
         </span>
       )}
     </a>

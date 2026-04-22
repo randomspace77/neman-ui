@@ -37,13 +37,30 @@ function getStatusConfig(state: ToolState) {
 
 function ChatToolCall({
   state = "output-available",
+  open: openProp,
+  defaultOpen,
+  onOpenChange,
   className,
   children,
   ...props
 }: React.ComponentProps<"div"> & {
   state?: ToolState
+  open?: boolean
+  defaultOpen?: boolean
+  onOpenChange?: (open: boolean) => void
 }) {
-  const [open, setOpen] = React.useState(state === "input-streaming" || state === "output-error")
+  const [internalOpen, setInternalOpen] = React.useState(
+    defaultOpen ?? (state === "input-streaming" || state === "output-error")
+  )
+  const open = openProp ?? internalOpen
+  const setOpen = React.useCallback(
+    (value: boolean | ((prev: boolean) => boolean)) => {
+      const next = typeof value === "function" ? value(open) : value
+      setInternalOpen(next)
+      onOpenChange?.(next)
+    },
+    [open, onOpenChange]
+  )
   const config = getStatusConfig(state)
 
   return (
@@ -59,7 +76,8 @@ function ChatToolCall({
       {...props}
     >
       <button
-        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        onClick={() => setOpen((o: boolean) => !o)}
         className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors duration-150 hover:bg-fill-subtle/60 rounded-[22px]"
       >
         {/* Wrench icon */}
@@ -68,6 +86,7 @@ function ChatToolCall({
           height="16"
           viewBox="0 0 16 16"
           fill="none"
+          aria-hidden="true"
           className="shrink-0 text-muted-foreground"
         >
           <path
@@ -95,6 +114,7 @@ function ChatToolCall({
           height="16"
           viewBox="0 0 16 16"
           fill="none"
+          aria-hidden="true"
           className={cn(
             "shrink-0 text-muted-foreground transition-transform duration-200",
             open && "rotate-180"

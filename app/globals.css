@@ -396,3 +396,34 @@
   50% { content: ".."; }
   75% { content: "..."; }
 }
+
+/* Syntax highlighting (highlight.js) — Neman dark code surface */
+.hljs {
+  background: transparent;
+  color: var(--code-surface-foreground);
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type { color: #ff7b72; }
+.hljs-string,
+.hljs-attr,
+.hljs-template-variable { color: #a5d6ff; }
+.hljs-comment,
+.hljs-doctag { color: #8b949e; font-style: italic; }
+.hljs-function .hljs-title,
+.hljs-title.function_ { color: #d2a8ff; }
+.hljs-built_in { color: #ffa657; }
+.hljs-number,
+.hljs-literal { color: #79c0ff; }
+.hljs-variable,
+.hljs-params { color: #ffa657; }
+.hljs-meta { color: #8b949e; }
+.hljs-deletion { color: #ffa198; background: rgba(255, 122, 110, 0.1); }
+.hljs-addition { color: #aff5b4; background: rgba(163, 245, 163, 0.1); }
+.hljs-symbol,
+.hljs-bullet { color: #a5d6ff; }
+.hljs-tag { color: #7ee787; }
+.hljs-name,
+.hljs-attribute { color: #7ee787; }
+.hljs-selector-class { color: #7ee787; }
+.hljs-selector-id { color: #7ee787; }

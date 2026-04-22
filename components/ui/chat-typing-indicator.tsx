@@ -11,6 +11,8 @@ function ChatTypingIndicator({
 }: React.ComponentProps<"div">) {
   return (
     <div
+      role="status"
+      aria-label="Assistant is typing"
       data-slot="chat-typing-indicator"
       className={cn(
         "inline-flex items-center gap-1.5 rounded-[22px] bg-card border border-border/50 px-4 py-2.5",
@@ -61,6 +63,8 @@ function ChatSpinner({
 
   return (
     <div
+      role="status"
+      aria-label="Loading"
       data-slot="chat-spinner"
       className={cn(
         "inline-block animate-spin rounded-full border-brand/25 border-t-brand shadow-[var(--shadow-drop-1)]",
