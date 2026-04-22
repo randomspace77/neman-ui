@@ -1,0 +1,310 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Radius scale — Neman core is 22px */
+  --radius-sm: calc(var(--radius) * 0.36);
+  --radius-md: calc(var(--radius) * 0.55);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.36);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Color mappings */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-fill-subtle: var(--fill-subtle);
+  --color-fill-medium: var(--fill-medium);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display",
+    "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif;
+  --font-serif: "Libre Baskerville", Georgia, Cambria, ui-serif,
+    "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Font weight 590 — Neman signature */
+  --font-weight-590: 590;
+}
+
+:root {
+  /* Neman Light theme — warm gray palette with brand blue */
+  --background: #f8f8f7;
+  --foreground: #34322d;
+  --card: #ffffff;
+  --card-foreground: #34322d;
+  --popover: #ffffff;
+  --popover-foreground: #34322d;
+  --primary: #1a1a19;
+  --primary-foreground: #ffffff;
+  --secondary: #f8f8f7;
+  --secondary-foreground: #34322d;
+  --muted: #f8f8f7;
+  --muted-foreground: #5e5e5b;
+  --accent: #f8f8f7;
+  --accent-foreground: #34322d;
+  --destructive: #f25a5a;
+  --destructive-foreground: #ffffff;
+  --border: #0000000f;
+  --input: #0000000f;
+  --ring: #0081f2;
+  --radius: 1.375rem;
+
+  /* Brand blue */
+  --brand: #0081f2;
+  --brand-foreground: #ffffff;
+
+  /* Semantic function colors */
+  --success: #25ba3b;
+  --success-foreground: #ffffff;
+  --warning: #efa201;
+  --warning-foreground: #34322d;
+
+  /* Fill system */
+  --fill-subtle: #37352f0a;
+  --fill-medium: #37352f14;
+
+  /* Chart colors */
+  --chart-1: #0081f2;
+  --chart-2: #25ba3b;
+  --chart-3: #efa201;
+  --chart-4: #f25a5a;
+  --chart-5: #858481;
+
+  /* Sidebar */
+  --sidebar: #ebebeb;
+  --sidebar-foreground: #34322d;
+  --sidebar-primary: #0081f2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f8f8f7;
+  --sidebar-accent-foreground: #34322d;
+  --sidebar-border: #0000000f;
+  --sidebar-ring: #0081f2;
+
+  /* Shadows */
+  --shadow-card: 0px 12px 32px 0px rgba(0, 0, 0, 0.02);
+  --shadow-drop-1: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-drop-2: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-drop-3: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-drop-4: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.dark {
+  --background: #171717;
+  --foreground: #dadada;
+  --card: #1f1f1f;
+  --card-foreground: #dadada;
+  --popover: #1f1f1f;
+  --popover-foreground: #dadada;
+  --primary: #fffffff2;
+  --primary-foreground: #171717;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #dadada;
+  --muted: #1c1c1c;
+  --muted-foreground: #acacac;
+  --accent: #1c1c1c;
+  --accent-foreground: #dadada;
+  --destructive: #eb4d4d;
+  --destructive-foreground: #ffffff;
+  --border: #ffffff0f;
+  --input: #ffffff0f;
+  --ring: #1a93fe;
+
+  /* Brand blue dark */
+  --brand: #1a93fe;
+  --brand-foreground: #171717;
+
+  /* Semantic function colors dark */
+  --success: #5eb92d;
+  --success-foreground: #171717;
+  --warning: #ffbf36;
+  --warning-foreground: #171717;
+
+  /* Fill system dark */
+  --fill-subtle: #ffffff0a;
+  --fill-medium: #ffffff14;
+
+  /* Chart colors dark */
+  --chart-1: #1a93fe;
+  --chart-2: #5eb92d;
+  --chart-3: #ffbf36;
+  --chart-4: #eb4d4d;
+  --chart-5: #7f7f7f;
+
+  /* Sidebar dark */
+  --sidebar: #1c1c1c;
+  --sidebar-foreground: #dadada;
+  --sidebar-primary: #1a93fe;
+  --sidebar-primary-foreground: #171717;
+  --sidebar-accent: #1c1c1c;
+  --sidebar-accent-foreground: #dadada;
+  --sidebar-border: #ffffff0f;
+  --sidebar-ring: #1a93fe;
+
+  /* Shadows dark */
+  --shadow-card: 0px 12px 32px 0px rgba(0, 0, 0, 0.3);
+  --shadow-drop-1: 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-drop-2: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-drop-3: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-drop-4: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+}
+
+/* Neman typography scale */
+@utility text-title-primary {
+  font-size: 14px;
+  font-weight: 590;
+  line-height: 20px;
+}
+@utility text-title-secondary {
+  font-size: 16px;
+  font-weight: 590;
+  line-height: 22px;
+}
+@utility text-title-tertiary {
+  font-size: 18px;
+  font-weight: 590;
+  line-height: 24px;
+}
+@utility text-headline-primary {
+  font-size: 20px;
+  font-weight: 590;
+  line-height: 25px;
+}
+@utility text-headline-secondary {
+  font-size: 24px;
+  font-weight: 590;
+  line-height: 30px;
+}
+@utility text-headline-tertiary {
+  font-size: 28px;
+  font-weight: 590;
+  line-height: 34px;
+}
+@utility text-body-primary {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.154px;
+}
+@utility text-body-secondary {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.304px;
+}
+@utility text-body-tertiary {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+}
+@utility text-label-primary {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+@utility text-label-primary-bold {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+@utility text-label-secondary {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.091px;
+}
+@utility text-label-secondary-bold {
+  font-size: 13px;
+  font-weight: 590;
+  line-height: 18px;
+}
+
+/* Neman animations */
+@keyframes scale-button {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+@keyframes menu-slide-down {
+  0% { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tip-in {
+  0% { opacity: 0; transform: translate(-50%, calc(-100% + 8px)) scale(0.92); }
+  100% { opacity: 1; transform: translate(-50%, -100%) scale(1); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 250% 0; }
+  100% { background-position: -250% 0; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.05; }
+}
+
+@keyframes progress-fill {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
