@@ -98,7 +98,7 @@ function DropdownMenuItem({
       data-slot="dropdown-menu-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-pointer select-none items-center gap-2 rounded-[19px] px-2 py-1.5 text-sm outline-none transition-colors duration-150 focus:bg-fill-subtle focus:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>svg]:size-4 [&>svg]:shrink-0",
+        "relative flex cursor-pointer select-none items-center gap-2 rounded-[19px] px-2 py-1.5 text-sm outline-none transition-colors duration-200 focus:bg-fill-subtle focus:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>svg]:size-4 [&>svg]:shrink-0",
         inset && "pl-8",
         className
       )}
@@ -117,7 +117,7 @@ function DropdownMenuCheckboxItem({
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       className={cn(
-        "relative flex cursor-pointer select-none items-center gap-2 rounded-[19px] py-1.5 pl-8 pr-2 text-sm outline-none transition-colors duration-150 focus:bg-fill-subtle focus:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex cursor-pointer select-none items-center gap-2 rounded-[19px] py-1.5 pl-8 pr-2 text-sm outline-none transition-colors duration-200 focus:bg-fill-subtle focus:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className
       )}
       checked={checked}
@@ -142,7 +142,7 @@ function DropdownMenuRadioItem({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        "relative flex cursor-pointer select-none items-center gap-2 rounded-[19px] py-1.5 pl-8 pr-2 text-sm outline-none transition-colors duration-150 focus:bg-fill-subtle focus:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex cursor-pointer select-none items-center gap-2 rounded-[19px] py-1.5 pl-8 pr-2 text-sm outline-none transition-colors duration-200 focus:bg-fill-subtle focus:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className
       )}
       {...props}

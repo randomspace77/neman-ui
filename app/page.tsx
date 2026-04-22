@@ -87,7 +87,7 @@ function HeroSection() {
         </div>
 
         {/* Search card — Manus-inspired */}
-        <div className="mt-16 flex w-full max-w-[640px] flex-col rounded-[22px] border border-border bg-card py-3 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)] transition-all duration-300 focus-within:border-foreground/20">
+        <div className="mt-16 flex w-full max-w-[640px] flex-col rounded-[22px] border border-border bg-card py-3 shadow-[var(--shadow-card)] transition-all duration-300 focus-within:border-foreground/20">
           <Input
             placeholder="Search components, tokens, patterns..."
             className="h-[46px] rounded-none border-0 bg-transparent px-5 shadow-none focus-visible:ring-0 focus-visible:border-0"
@@ -160,7 +160,7 @@ function PrinciplesSection() {
           {principles.map((item) => (
             <div
               key={item.title}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[0px_16px_40px_0px_rgba(0,0,0,0.04)]"
+              className="group rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-drop-4)]"
             >
               <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-fill-subtle text-foreground transition-colors duration-300 group-hover:bg-brand/10 group-hover:text-brand">
                 {item.icon}
@@ -188,7 +188,7 @@ function ComponentPreviewSection() {
 
         <div className="grid gap-8 md:grid-cols-2">
           {/* Buttons Preview */}
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
             <h3 className="text-title-secondary mb-4 font-[590]">Buttons</h3>
             <div className="flex flex-wrap gap-3">
               <Button>Primary</Button>
@@ -201,13 +201,13 @@ function ComponentPreviewSection() {
           </div>
 
           {/* Input Preview */}
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
             <h3 className="text-title-secondary mb-4 font-[590]">Input</h3>
             <Input placeholder="Search components..." />
           </div>
 
           {/* Badges Preview */}
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
             <h3 className="text-title-secondary mb-4 font-[590]">Badges</h3>
             <div className="flex flex-wrap gap-2">
               <Badge>Default</Badge>
@@ -220,7 +220,7 @@ function ComponentPreviewSection() {
           </div>
 
           {/* Color Palette Preview */}
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
             <h3 className="text-title-secondary mb-4 font-[590]">Color Tokens</h3>
             <div className="grid grid-cols-3 gap-2">
               {[

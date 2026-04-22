@@ -53,6 +53,7 @@ import {
 } from "@/components/ui/chat-typing-indicator"
 import { ChatSources, ChatSource } from "@/components/ui/chat-sources"
 import { ChatBranch } from "@/components/ui/chat-branch"
+import { ChatMarkdown } from "@/components/ui/chat-markdown"
 
 function Navbar() {
   return (
@@ -183,7 +184,7 @@ function DemoToolCalls() {
         <ChatToolCallInput>
           <div className="space-y-1.5">
             <div className="text-label-secondary-bold text-muted-foreground">Parameters</div>
-            <div className="rounded-[14px] bg-[#1a1a1a] p-3 text-[13px] leading-[20px] text-white/75">
+            <div className="rounded-[6px] bg-[var(--code-surface)] p-3 text-[13px] leading-[20px] text-[var(--code-surface-foreground)]">
               {`{ "query": "fibonacci memoization typescript" }`}
             </div>
           </div>
@@ -320,6 +321,52 @@ function DemoSources() {
 
 // ─── Demo: Branching ──────────────────────────────────────────────
 
+function DemoMarkdown() {
+  const markdown = `Here's a quick reference for TypeScript patterns:
+
+## Key Concepts
+
+TypeScript adds **static typing** to JavaScript. You can define interfaces, use generics, and leverage type narrowing.
+
+### Code Example
+
+\`\`\`typescript
+function fibonacci(n: number): number {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+\`\`\`
+
+### Comparison Table
+
+| Approach | Time | Space | Readability |
+|---|---|---|---|
+| Recursive | O(2^n) | O(n) | High |
+| Memoized | O(n) | O(n) | Medium |
+| Iterative | O(n) | O(1) | Medium |
+
+> Memoization trades space for time — cache results to avoid redundant computation.
+
+- Use \`const\` by default, \`let\` only when reassignment is needed
+- Prefer **interfaces** over type aliases for object shapes
+- Use [TypeScript docs](https://www.typescriptlang.org/docs/) for reference
+
+___`
+
+  return (
+    <div className="max-w-[600px]">
+      <ChatMessage from="assistant">
+        <ChatMessageAvatar>
+          <Sparkles className="size-4" />
+        </ChatMessageAvatar>
+        <ChatMessageContent from="assistant">
+          <ChatMarkdown>{markdown}</ChatMarkdown>
+        </ChatMessageContent>
+      </ChatMessage>
+    </div>
+  )
+}
+
 function DemoBranching() {
   const [branch, setBranch] = useState(0)
   const responses = [
@@ -344,7 +391,7 @@ function DemoBranching() {
 
 function DemoFullConversation() {
   return (
-    <div className="mx-auto w-full max-w-[640px] rounded-[22px] border border-border bg-card shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+    <div className="mx-auto w-full max-w-[640px] rounded-[22px] border border-border bg-card shadow-[var(--shadow-card)]">
       <ChatConversation className="h-[520px]">
         <ChatMessage from="user">
           <ChatMessageContent from="user">
@@ -503,7 +550,7 @@ export default function AIPage() {
                 User and assistant message bubbles with avatars, actions, and timestamps.
               </p>
             </div>
-            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoMessages />
             </div>
           </section>
@@ -516,7 +563,7 @@ export default function AIPage() {
                 Collapsible thinking/reasoning panels that auto-expand during streaming.
               </p>
             </div>
-            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoReasoning />
             </div>
           </section>
@@ -529,7 +576,7 @@ export default function AIPage() {
                 Collapsible tool call panels with status badges, parameter inputs, and result outputs.
               </p>
             </div>
-            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoToolCalls />
             </div>
           </section>
@@ -542,7 +589,7 @@ export default function AIPage() {
                 Typing indicators, streaming text with cursor, and spinners.
               </p>
             </div>
-            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoLoadingStates />
             </div>
           </section>
@@ -566,8 +613,21 @@ export default function AIPage() {
                 Collapsible references with source links and hostname display.
               </p>
             </div>
-            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoSources />
+            </div>
+          </section>
+
+          {/* Markdown Rendering */}
+          <section id="markdown">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Markdown</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Rich markdown rendering with GFM tables, syntax highlighting, and Neman styling.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoMarkdown />
             </div>
           </section>
 
@@ -579,7 +639,7 @@ export default function AIPage() {
                 Navigate between alternative model responses with previous/next controls.
               </p>
             </div>
-            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[0px_12px_32px_0px_rgba(0,0,0,0.02)]">
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoBranching />
             </div>
           </section>

@@ -125,7 +125,7 @@ function ChatMarkdown({
             <img
               src={src}
               alt={alt || ""}
-              className="mb-3 max-w-full rounded-[14px] last:mb-0"
+              className="mb-3 max-w-full rounded-[6px] last:mb-0"
             />
           ),
         }}

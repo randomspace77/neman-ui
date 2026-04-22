@@ -156,6 +156,7 @@ function ChatPromptInputSubmit({
     <button
       data-slot="chat-prompt-input-submit"
       type="submit"
+      aria-label="Send message"
       disabled={disabled}
       className={cn(
         "inline-flex size-8 items-center justify-center rounded-full bg-brand text-brand-foreground",

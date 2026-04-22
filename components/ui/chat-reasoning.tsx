@@ -21,7 +21,7 @@ function ChatReasoning({
   isStreaming?: boolean
   duration?: number
 }) {
-  const [internalOpen, setInternalOpen] = React.useState(defaultOpen)
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen ?? false)
   const open = openProp ?? internalOpen
   const setOpen = React.useCallback(
     (value: boolean | ((prev: boolean) => boolean)) => {
@@ -58,7 +58,7 @@ function ChatReasoning({
       <button
         aria-expanded={open}
         onClick={() => setOpen((o: boolean) => !o)}
-        className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-150 hover:bg-fill-subtle/60 rounded-[22px]"
+        className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-subtle/60 rounded-[22px]"
       >
         <svg
           width="16"
@@ -80,7 +80,7 @@ function ChatReasoning({
           />
         </svg>
         <span className={cn(
-          "text-label-secondary-bold transition-colors duration-150",
+          "text-label-secondary-bold transition-colors duration-200",
           isStreaming ? "text-brand" : "text-muted-foreground"
         )}>
           {isStreaming ? (

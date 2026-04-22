@@ -78,7 +78,7 @@ function ChatToolCall({
       <button
         aria-expanded={open}
         onClick={() => setOpen((o: boolean) => !o)}
-        className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors duration-150 hover:bg-fill-subtle/60 rounded-[22px]"
+        className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-subtle/60 rounded-[22px]"
       >
         {/* Wrench icon */}
         <svg
@@ -172,7 +172,7 @@ function ChatToolCallOutput({
       data-slot="chat-tool-call-output"
       data-variant={variant}
       className={cn(
-        "rounded-[14px] p-3 text-body-primary",
+        "rounded-[6px] p-3 text-body-primary",
         variant === "error"
           ? "bg-destructive/5 text-destructive border border-destructive/15"
           : "bg-fill-subtle text-foreground",

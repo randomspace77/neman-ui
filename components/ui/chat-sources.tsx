@@ -39,7 +39,7 @@ function ChatSources({
       <button
         aria-expanded={open}
         onClick={() => setOpen((o: boolean) => !o)}
-        className="flex w-full items-center gap-2.5 px-4 py-2.5 text-left transition-colors duration-150 hover:bg-fill-subtle/60 rounded-[22px]"
+        className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-subtle/60 rounded-[22px]"
       >
         <svg
           width="14"
@@ -107,7 +107,7 @@ function ChatSource({
       rel="noopener noreferrer"
       data-slot="chat-source"
       className={cn(
-        "flex items-center gap-2.5 rounded-[14px] px-3 py-2 text-label-secondary",
+        "flex items-center gap-2.5 rounded-[10px] px-3 py-2 text-label-secondary",
         "transition-all duration-200 hover:bg-brand/[0.04] hover:text-foreground",
         className
       )}
@@ -116,7 +116,7 @@ function ChatSource({
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0 text-brand">
         <path d="M7 1L3 5H5V9H9V5H11L7 1Z" fill="currentColor" />
       </svg>
-      <span className="truncate font-medium text-foreground">{title}</span>
+      <span className="truncate font-[590] text-foreground">{title}</span>
       {url && (
         <span className="ml-auto truncate text-muted-foreground">
           {(() => { try { return new URL(url).hostname } catch { return url } })()}
