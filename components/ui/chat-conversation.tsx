@@ -111,7 +111,7 @@ function ChatConversationEmpty({
         </div>
       )}
       {title && (
-        <h3 className="text-headline-primary font-[590] text-foreground">{title}</h3>
+        <h3 className="text-headline-primary text-foreground">{title}</h3>
       )}
       {description && (
         <p className="max-w-[400px] text-body-secondary text-muted-foreground">

@@ -71,7 +71,7 @@ function ChatMessageContent({
         ],
         from === "assistant" && [
           "rounded-[22px] bg-card px-4 py-2.5 text-foreground",
-          "border border-border/60 shadow-[var(--shadow-card)]",
+          "border border-border/50 shadow-[var(--shadow-card)]",
         ],
         className
       )}

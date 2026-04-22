@@ -20,9 +20,9 @@ function ChatTypingIndicator({
       {...props}
     >
       <span className="inline-flex items-center gap-1.5">
-        <span className="neman-typing-dot h-2 w-2 rounded-full bg-brand/50 animate-[bounce_1.4s_ease-in-out_infinite]" />
-        <span className="neman-typing-dot h-2 w-2 rounded-full bg-brand/50 animate-[bounce_1.4s_ease-in-out_0.2s_infinite]" />
-        <span className="neman-typing-dot h-2 w-2 rounded-full bg-brand/50 animate-[bounce_1.4s_ease-in-out_0.4s_infinite]" />
+        <span className="neman-typing-dot h-2 w-2 rounded-full bg-brand animate-[bounce_1.4s_ease-in-out_infinite]" />
+        <span className="neman-typing-dot h-2 w-2 rounded-full bg-brand animate-[bounce_1.4s_ease-in-out_0.2s_infinite]" />
+        <span className="neman-typing-dot h-2 w-2 rounded-full bg-brand animate-[bounce_1.4s_ease-in-out_0.4s_infinite]" />
       </span>
     </div>
   )

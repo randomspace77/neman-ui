@@ -78,7 +78,7 @@ function ChatToolCall({
             strokeLinejoin="round"
           />
         </svg>
-        <span className="flex-1 text-label-secondary font-[590] text-foreground">
+        <span className="flex-1 text-label-secondary-bold text-foreground">
           {props.title || "Tool Call"}
         </span>
         <span

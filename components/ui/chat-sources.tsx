@@ -39,7 +39,7 @@ function ChatSources({
             strokeLinejoin="round"
           />
         </svg>
-        <span className="text-label-secondary font-[590] text-muted-foreground">
+        <span className="text-label-secondary-bold text-muted-foreground">
           {count != null ? `${count} source${count !== 1 ? "s" : ""}` : "Sources"}
         </span>
         <svg

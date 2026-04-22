@@ -42,6 +42,8 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-fill-subtle: var(--fill-subtle);
   --color-fill-medium: var(--fill-medium);
+  --color-code-surface: var(--code-surface);
+  --color-code-surface-foreground: var(--code-surface-foreground);
 
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -78,7 +80,7 @@
   --card-foreground: #34322d;
   --popover: #ffffff;
   --popover-foreground: #34322d;
-  --primary: #1a1a19;
+  --primary: #37352f;
   --primary-foreground: #ffffff;
   --secondary: #f8f8f7;
   --secondary-foreground: #34322d;
@@ -124,6 +126,10 @@
   --sidebar-border: #0000000f;
   --sidebar-ring: #0081f2;
 
+  /* Code surface (dark-themed regardless of light/dark mode) */
+  --code-surface: #1a1a1a;
+  --code-surface-foreground: #ffffffbf;
+
   /* Shadows */
   --shadow-card: 0px 12px 32px 0px rgba(0, 0, 0, 0.02);
   --shadow-drop-1: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -139,8 +145,8 @@
   --card-foreground: #dadada;
   --popover: #1f1f1f;
   --popover-foreground: #dadada;
-  --primary: #e8e7e5;
-  --primary-foreground: #2a2926;
+  --primary: #dadada;
+  --primary-foreground: #1a1a1a;
   --secondary: #1c1c1c;
   --secondary-foreground: #dadada;
   --muted: #1c1c1c;
@@ -183,6 +189,10 @@
   --sidebar-accent-foreground: #dadada;
   --sidebar-border: #ffffff0f;
   --sidebar-ring: #1a93fe;
+
+  /* Code surface dark */
+  --code-surface: #0f0f0f;
+  --code-surface-foreground: #ffffffbf;
 
   /* Shadows dark */
   --shadow-card: 0px 12px 32px 0px rgba(0, 0, 0, 0.3);

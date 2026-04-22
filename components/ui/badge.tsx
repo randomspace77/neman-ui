@@ -4,11 +4,11 @@ import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-[100px] border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] duration-300 [&>svg]:pointer-events-none [&>svg]:size-3",
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-[100px] border border-transparent px-2 py-0.5 text-xs font-[590] whitespace-nowrap transition-[color,background-color] duration-300 [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        default: "bg-primary text-primary-foreground hover:opacity-80",
         secondary: "bg-fill-subtle text-foreground hover:bg-fill-medium",
         destructive: "bg-destructive/10 text-destructive hover:bg-destructive/20",
         outline: "border-border text-foreground hover:bg-fill-subtle",

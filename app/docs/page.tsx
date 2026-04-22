@@ -43,8 +43,8 @@ export default function DocsPage() {
               { name: "Background", var: "--background", light: "#f8f8f7", dark: "#171717" },
               { name: "Foreground", var: "--foreground", light: "#34322d", dark: "#dadada" },
               { name: "Card", var: "--card", light: "#ffffff", dark: "#1f1f1f" },
-              { name: "Primary", var: "--primary", light: "#1a1a19", dark: "#e8e7e5" },
-              { name: "Primary Foreground", var: "--primary-foreground", light: "#ffffff", dark: "#2a2926" },
+              { name: "Primary", var: "--primary", light: "#37352f", dark: "#dadada" },
+              { name: "Primary Foreground", var: "--primary-foreground", light: "#ffffff", dark: "#1a1a1a" },
               { name: "Secondary", var: "--secondary", light: "#f8f8f7", dark: "#1c1c1c" },
             ].map((item) => (
               <div key={item.name} className="rounded-[22px] border border-border bg-card p-4 shadow-[var(--shadow-card)]">

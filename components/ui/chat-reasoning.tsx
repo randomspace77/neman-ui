@@ -78,7 +78,7 @@ function ChatReasoning({
           />
         </svg>
         <span className={cn(
-          "text-label-secondary font-[590] transition-colors duration-150",
+          "text-label-secondary-bold transition-colors duration-150",
           isStreaming ? "text-brand" : "text-muted-foreground"
         )}>
           {isStreaming ? (

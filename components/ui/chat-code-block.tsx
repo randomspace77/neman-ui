@@ -41,7 +41,7 @@ function ChatCodeBlock({
     <div
       data-slot="chat-code-block"
       className={cn(
-        "group relative overflow-hidden rounded-[22px] bg-[#1a1a1a] dark:bg-[#0f0f0f]",
+        "group relative overflow-hidden rounded-[22px] bg-[var(--code-surface)]",
         "shadow-[var(--shadow-drop-2)]",
         className
       )}
@@ -49,12 +49,12 @@ function ChatCodeBlock({
     >
       {/* Header */}
       {(language || filename) && (
-        <div className="flex items-center justify-between border-b border-white/[0.08] px-4 py-2.5">
+        <div className="flex items-center justify-between border-b border-[var(--code-surface-foreground)]/8 px-4 py-2.5">
           <div className="flex items-center gap-2">
             {filename ? (
-              <span className="text-label-secondary text-white/50">{filename}</span>
+              <span className="text-label-secondary text-[var(--code-surface-foreground)]/50">{filename}</span>
             ) : language ? (
-              <span className="text-label-secondary text-white/50">{language}</span>
+              <span className="text-label-secondary text-[var(--code-surface-foreground)]/50">{language}</span>
             ) : null}
           </div>
           <button
@@ -63,7 +63,7 @@ function ChatCodeBlock({
               "inline-flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-label-primary transition-all duration-200",
               copied
                 ? "bg-success/20 text-success"
-                : "text-white/35 hover:bg-white/[0.08] hover:text-white/70"
+                : "text-[var(--code-surface-foreground)]/35 hover:bg-[var(--code-surface-foreground)]/8 hover:text-[var(--code-surface-foreground)]/70"
             )}
           >
             {copied ? (
@@ -94,7 +94,7 @@ function ChatCodeBlock({
             "absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-label-primary transition-all duration-200",
             copied
               ? "bg-success/20 text-success opacity-100"
-              : "text-white/30 hover:bg-white/[0.08] hover:text-white/70 opacity-0 group-hover:opacity-100"
+              : "text-[var(--code-surface-foreground)]/30 hover:bg-[var(--code-surface-foreground)]/8 hover:text-[var(--code-surface-foreground)]/70 opacity-0 group-hover:opacity-100"
           )}
         >
           {copied ? "Copied" : "Copy"}
@@ -103,7 +103,7 @@ function ChatCodeBlock({
 
       {/* Code content */}
       <div className="overflow-x-auto px-4 py-3">
-        <pre className="text-[13px] leading-[20px] text-white/75">
+        <pre className="text-[13px] leading-[20px] text-[var(--code-surface-foreground)]/75">
           <code>{children}</code>
         </pre>
       </div>

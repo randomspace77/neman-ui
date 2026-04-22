@@ -51,7 +51,7 @@ function ChatAttachment({
     <div
       data-slot="chat-attachment"
       className={cn(
-        "group relative flex items-center gap-3 overflow-hidden rounded-[16px] border border-border/50 bg-card",
+        "group relative flex items-center gap-3 overflow-hidden rounded-lg border border-border/50 bg-card",
         "shadow-[var(--shadow-drop-1)] transition-all duration-300 hover:border-foreground/15 hover:shadow-[var(--shadow-drop-2)]",
         isImage && thumbnail ? "p-1.5" : "px-4 py-2.5",
         className
@@ -60,7 +60,7 @@ function ChatAttachment({
     >
       {/* Image thumbnail */}
       {isImage && thumbnail && (
-        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[12px] bg-fill-subtle">
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md bg-fill-subtle">
           {/* Placeholder for actual image */}
           <div className="flex h-full w-full items-center justify-center text-muted-foreground">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

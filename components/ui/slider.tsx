@@ -36,7 +36,7 @@ function Slider({
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb
         data-slot="slider-thumb"
-        className="block size-5 rounded-full border-2 border-brand bg-white shadow-[var(--shadow-drop-1)] ring-0 transition-all duration-150 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+        className="block size-5 rounded-full border-2 border-brand bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] ring-0 transition-all duration-150 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
       />
     </SliderPrimitive.Root>
   )
