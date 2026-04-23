@@ -2,8 +2,9 @@
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { useChatContext } from "@/packages/headless/src"
 
-// ─── Prompt input container ──────────────────────────────────────
+// ─── Prompt input container (dual-mode) ──────────────────────
 
 function ChatPromptInput({
   onSubmit,
@@ -13,10 +14,24 @@ function ChatPromptInput({
 }: React.ComponentProps<"form"> & {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
 }) {
+  const ctx = useChatContext()
+  const isConnected = ctx !== null
+
+  const handleSubmit = React.useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      if (isConnected && ctx) {
+        ctx.composer.send()
+      }
+      onSubmit?.(e)
+    },
+    [isConnected, ctx, onSubmit],
+  )
+
   return (
     <form
       data-slot="chat-prompt-input"
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       className={cn("relative", className)}
       {...props}
     >
@@ -25,13 +40,21 @@ function ChatPromptInput({
   )
 }
 
-// ─── Textarea with auto-grow ─────────────────────────────────────
+// ─── Textarea with auto-grow (dual-mode) ────────────────────────
 
 function ChatPromptInputTextarea({
   placeholder = "Send a message...",
   className,
+  value: valueProp,
+  onChange: onChangeProp,
   ...props
-}: React.ComponentProps<"textarea">) {
+}: React.ComponentProps<"textarea"> & {
+  /** When NemanChatProvider is present, value is synced to composer.text */
+  value?: string
+}) {
+  const ctx = useChatContext()
+  const isConnected = ctx !== null && valueProp === undefined
+
   const ref = React.useRef<HTMLTextAreaElement>(null)
 
   const autoResize = React.useCallback(() => {
@@ -43,13 +66,25 @@ function ChatPromptInputTextarea({
 
   React.useEffect(() => {
     autoResize()
-  }, [autoResize])
+  }, [autoResize, isConnected ? ctx?.composer.text : valueProp])
+
+  // Connected mode: sync with composer
+  const effectiveValue = isConnected ? ctx!.composer.text : valueProp
+  const effectiveOnChange = isConnected
+    ? (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        ctx!.composer.setText(e.target.value)
+        onChangeProp?.(e)
+      }
+    : onChangeProp
 
   return (
     <textarea
       ref={ref}
       data-slot="chat-prompt-input-textarea"
+      aria-label="Message input"
       placeholder={placeholder}
+      value={effectiveValue}
+      onChange={effectiveOnChange}
       onInput={autoResize}
       rows={1}
       className={cn(
@@ -111,7 +146,7 @@ function ChatPromptInputToolbarLeft({
   )
 }
 
-// ─── Toolbar right group ──────────────────────────────────────────
+// ─── Toolbar right group ───────────────────────────────────────────
 
 function ChatPromptInputToolbarRight({
   className,
@@ -145,19 +180,24 @@ function ChatPromptInputAction({
   )
 }
 
-// ─── Submit button ────────────────────────────────────────────────
+// ─── Submit button (dual-mode) ──────────────────────────────────
 
 function ChatPromptInputSubmit({
   disabled,
   className,
   ...props
 }: React.ComponentProps<"button">) {
+  const ctx = useChatContext()
+  const isConnected = ctx !== null
+  const isComposerEmpty = isConnected ? !ctx.composer.text.trim() : false
+  const isDisabled = disabled ?? (isConnected ? isComposerEmpty : undefined)
+
   return (
     <button
       data-slot="chat-prompt-input-submit"
       type="submit"
       aria-label="Send message"
-      disabled={disabled}
+      disabled={isDisabled}
       className={cn(
         "inline-flex size-8 items-center justify-center rounded-full bg-brand text-brand-foreground",
         "shadow-[var(--shadow-drop-2)]",
@@ -180,19 +220,32 @@ function ChatPromptInputSubmit({
   )
 }
 
-// ─── Stop button ─────────────────────────────────────────────────
+// ─── Stop button (dual-mode) ─────────────────────────────────────
 
 function ChatPromptInputStop({
   onClick,
   className,
   ...props
 }: React.ComponentProps<"button">) {
+  const ctx = useChatContext()
+  const isConnected = ctx !== null
+
+  const handleClick = React.useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (isConnected && ctx) {
+        ctx.streaming.abort()
+      }
+      onClick?.(e)
+    },
+    [isConnected, ctx, onClick],
+  )
+
   return (
     <button
       data-slot="chat-prompt-input-stop"
       type="button"
       aria-label="Stop generating"
-      onClick={onClick}
+      onClick={handleClick}
       className={cn(
         "inline-flex size-8 items-center justify-center rounded-full bg-destructive text-destructive-foreground",
         "shadow-[var(--shadow-drop-2)]",

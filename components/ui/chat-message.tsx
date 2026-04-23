@@ -2,32 +2,100 @@
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import {
+  useMessage,
+  type Message,
+} from "@/packages/headless/src"
+import type { ToolState } from "./chat-tool-call"
 
-// ─── Message bubble ─────────────────────────────────────────────
+// ─── Message bubble (dual-mode: presentational + connected) ──────
 
 function ChatMessage({
-  from,
+  from: fromProp,
+  messageId,
   className,
   children,
   ...props
 }: React.ComponentProps<"div"> & {
-  from: "user" | "assistant"
+  /** Message sender. Required in presentational mode, optional if messageId is provided. */
+  from?: "user" | "assistant"
+  /** When provided and NemanChatProvider is present, reads message state from context. */
+  messageId?: string
 }) {
+  const message = messageId ? useMessage(messageId) : null
+  const effectiveFrom = fromProp ?? (message?.role === "user" ? "user" : message?.role === "assistant" ? "assistant" : undefined)
+
+  // If we have a message from context but no children, render auto content
+  const autoContent = message && !children ? <AutoMessageContent message={message} /> : null
+
   return (
     <div
       role="article"
-      aria-label={from === "user" ? "Your message" : "Assistant message"}
+      aria-label={effectiveFrom === "user" ? "Your message" : "Assistant message"}
       data-slot="chat-message"
-      data-from={from}
+      data-from={effectiveFrom}
       className={cn(
         "group flex w-full gap-3",
-        from === "user" ? "justify-end" : "justify-start",
+        effectiveFrom === "user" ? "justify-end" : "justify-start",
         className
       )}
       {...props}
     >
-      {children}
+      {autoContent ?? children}
     </div>
+  )
+}
+
+// ─── Auto-render message content from context ────────────────────
+
+function AutoMessageContent({ message }: { message: Message }) {
+  return (
+    <ChatMessageContent from={message.role === "user" ? "user" : "assistant"}>
+      {message.parts.map((part, i) => {
+        switch (part.type) {
+          case "text":
+            return <ChatMessageText key={i}>{part.text}</ChatMessageText>
+          case "reasoning":
+            return (
+              <div key={i} className="text-sm text-muted-foreground italic">
+                {part.text}
+              </div>
+            )
+          case "tool-call":
+            return (
+              <div key={i} data-slot="chat-auto-tool-call" className="flex items-center gap-2 text-sm">
+                <span className="rounded-full bg-brand/10 px-2 py-0.5 text-label-primary-bold text-brand">
+                  {part.state === "input-streaming" || part.state === "input-available" ? "Running" : part.state === "output-available" ? "Done" : part.state === "output-error" ? "Error" : part.state}
+                </span>
+                <span className="font-[590]">{part.toolName}</span>
+              </div>
+            )
+          case "image":
+            return (
+              <img
+                key={i}
+                src={part.image}
+                alt={part.alt ?? ""}
+                className="max-w-full rounded-[10px]"
+              />
+            )
+          case "source":
+            return (
+              <a
+                key={i}
+                href={part.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand underline text-sm"
+              >
+                {part.title ?? part.url}
+              </a>
+            )
+          default:
+            return null
+        }
+      })}
+    </ChatMessageContent>
   )
 }
 
@@ -53,7 +121,7 @@ function ChatMessageAvatar({
   )
 }
 
-// ─── Message content area ────────────────────────────────────────
+// ─── Message content area (dual-mode) ────────────────────────────
 
 function ChatMessageContent({
   from,
@@ -86,7 +154,7 @@ function ChatMessageContent({
   )
 }
 
-// ─── Message text ────────────────────────────────────────────────
+// ─── Message text (dual-mode) ─────────────────────────────────────
 
 function ChatMessageText({
   className,
@@ -150,7 +218,7 @@ function ChatMessageTimestamp({
       className={cn("text-label-secondary text-muted-foreground", className)}
       {...props}
     />
-)
+  )
 }
 
 export {

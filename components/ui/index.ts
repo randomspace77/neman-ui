@@ -87,6 +87,81 @@ export {
 // Utilities
 export { cn } from "@/lib/utils"
 
+// Headless Layer (type-only imports to avoid bundling runtime code)
+export type {
+  Message,
+  MessageRole,
+  MessageStatus,
+  ToolCallState,
+  Attachment,
+  ChatAdapter,
+  AdapterStreamEvent,
+  ThreadState,
+  ThreadActions,
+  ComposerState,
+  ComposerActions,
+  ChatContextValue,
+  AttachmentAdapter,
+  DropzoneState,
+} from "@/packages/headless/src"
+export {
+  NemanChatProvider,
+  useChatContext,
+  useThread,
+  useThreadRequired,
+  useComposer,
+  useComposerRequired,
+  useMessage,
+  useStreaming,
+  useDropzone,
+  createVercelAiAdapter,
+  createOpenAiAdapter,
+  createCustomAdapter,
+} from "@/packages/headless/src"
+
+// Tool-UI Layer
+export {
+  ToolUI,
+  getStatusConfig as getToolUIStatusConfig,
+  Plan,
+  ProgressTracker,
+  ApprovalCard,
+  CodeBlock as ToolCodeBlock,
+  CodeDiff,
+  DataTable,
+  Citation,
+  Terminal,
+  OptionList,
+  ImageGallery,
+  defineToolUiContract,
+  registerToolUi,
+  createResultToolRenderer,
+  renderToolCallParts,
+  Chart,
+  StatsDisplay,
+  LinkPreview,
+  OrderSummary,
+  PreferencesPanel,
+  ParameterSlider,
+  QuestionFlow,
+  ToolImage,
+  Video,
+  Audio,
+  ItemCarousel,
+  MessageDraft,
+  InstagramPost,
+  LinkedInPost,
+  XPost,
+  GeoMap,
+  WeatherWidget,
+} from "@/packages/tool-ui/src"
+export type {
+  ToolUiContract,
+  Action as ToolUiAction,
+  DecisionResult,
+  ToolUiComponentProps,
+} from "@/packages/tool-ui/src"
+
 // AI Chat
 export {
   ChatMessage,
@@ -99,6 +174,7 @@ export {
 } from "./chat-message"
 export {
   ChatConversation,
+  ChatConversationAuto,
   ChatConversationEmpty,
 } from "./chat-conversation"
 export {
@@ -141,6 +217,18 @@ export {
   ChatSource,
 } from "./chat-sources"
 export { ChatBranch } from "./chat-branch"
+export {
+  ChatActionBar,
+  ChatActionBarButton,
+  ChatActionBarCopy,
+  ChatActionBarEdit,
+  ChatActionBarReload,
+  ChatActionBarFeedbackPositive,
+  ChatActionBarFeedbackNegative,
+} from "./chat-action-bar"
+export { ChatError } from "./chat-error"
+export { ChatQuote } from "./chat-quote"
+export { ChatInProgress } from "./chat-in-progress"
 
 // Theme
 export { ThemeProvider } from "@/components/theme-provider"

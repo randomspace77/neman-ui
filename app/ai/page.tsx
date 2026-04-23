@@ -54,6 +54,37 @@ import {
 import { ChatSources, ChatSource } from "@/components/ui/chat-sources"
 import { ChatBranch } from "@/components/ui/chat-branch"
 import { ChatMarkdown } from "@/components/ui/chat-markdown"
+import {
+  ChatActionBar,
+  ChatActionBarCopy,
+  ChatActionBarEdit,
+  ChatActionBarReload,
+  ChatActionBarFeedbackPositive,
+  ChatActionBarFeedbackNegative,
+} from "@/components/ui/chat-action-bar"
+import { ChatError } from "@/components/ui/chat-error"
+import { ChatQuote } from "@/components/ui/chat-quote"
+import { ChatInProgress } from "@/components/ui/chat-in-progress"
+import {
+  Plan,
+  ProgressTracker,
+  ApprovalCard,
+  CodeBlock as ToolCodeBlock,
+  DataTable,
+  StatsDisplay,
+  Chart,
+  OrderSummary,
+  LinkPreview,
+  WeatherWidget,
+  QuestionFlow,
+  PreferencesPanel,
+  GeoMap,
+  Audio,
+  MessageDraft,
+  InstagramPost,
+  XPost,
+  ItemCarousel,
+} from "@/packages/tool-ui/src"
 
 function Navbar() {
   return (
@@ -492,6 +523,313 @@ function insertionSort(arr: number[]): number[] {
   )
 }
 
+// ─── Demo: Action Bar ────────────────────────────────────────────
+
+function DemoActionBar() {
+  const [copied, setCopied] = useState(false)
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-col gap-2">
+        <p className="text-label-secondary text-muted-foreground">Action bar with all actions:</p>
+        <ChatActionBar>
+          <ChatActionBarCopy value="Hello, world!" />
+          <ChatActionBarEdit onClick={() => {}} />
+          <ChatActionBarReload onClick={() => {}} />
+          <ChatActionBarFeedbackPositive onClick={() => {}} />
+          <ChatActionBarFeedbackNegative onClick={() => {}} />
+        </ChatActionBar>
+      </div>
+      <div className="flex flex-col gap-2">
+        <p className="text-label-secondary text-muted-foreground">Minimal action bar:</p>
+        <ChatActionBar>
+          <ChatActionBarCopy value="Copy this text" />
+          <ChatActionBarReload onClick={() => {}} />
+        </ChatActionBar>
+      </div>
+    </div>
+  )
+}
+
+// ─── Demo: Error & Quote ──────────────────────────────────────────
+
+function DemoErrorAndQuote() {
+  return (
+    <div className="space-y-4">
+      <ChatError error="Failed to generate response. The model encountered an unexpected error." onRetry={() => {}} />
+      <ChatError error={new Error("Network request timed out after 30 seconds")} onRetry={() => {}} />
+      <ChatQuote onDismiss={() => {}}>
+        The iterative approach is generally preferred for Fibonacci due to its O(n) time complexity and O(1) space usage.
+      </ChatQuote>
+    </div>
+  )
+}
+
+// ─── Demo: In Progress ──────────────────────────────────────────
+
+function DemoInProgress() {
+  return (
+    <div className="space-y-3">
+      <ChatInProgress />
+      <p className="text-label-secondary text-muted-foreground">Shows alongside an assistant message while streaming.</p>
+    </div>
+  )
+}
+
+// ─── Demo: Tool UI Components ──────────────────────────────────────
+
+function DemoToolUI() {
+  const [prefValues, setPrefValues] = useState<Record<string, string | boolean | number>>({})
+  const [qAnswers, setQAnswers] = useState<Record<string, string | string[] | boolean>>({})
+
+  return (
+    <div className="space-y-8">
+      {/* Plan */}
+      <Plan
+        steps={[
+          { id: "1", title: "Analyze requirements", status: "complete" },
+          { id: "2", title: "Design architecture", status: "complete" },
+          { id: "3", title: "Implement core features", status: "running" },
+          { id: "4", title: "Write tests", status: "pending" },
+          { id: "5", title: "Deploy to production", status: "pending" },
+        ]}
+      />
+
+      {/* Progress Tracker */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ProgressTracker.Horizontal
+          steps={[
+            { id: "1", label: "Upload", status: "complete" },
+            { id: "2", label: "Process", status: "running" },
+            { id: "3", label: "Review", status: "pending" },
+            { id: "4", label: "Done", status: "pending" },
+          ]}
+        />
+        <ProgressTracker.Vertical
+          steps={[
+            { id: "1", label: "Clone repository", status: "complete" },
+            { id: "2", label: "Install dependencies", status: "complete" },
+            { id: "3", label: "Run build", status: "running" },
+            { id: "4", label: "Deploy", status: "pending" },
+          ]}
+        />
+      </div>
+
+      {/* Approval Card */}
+      <ApprovalCard
+        title="Deploy to Production"
+        description="This will push the latest build to production. All tests have passed."
+        onApprove={() => {}}
+        onDeny={() => {}}
+      />
+
+      {/* Stats Display */}
+      <StatsDisplay
+        title="Analytics Overview"
+        stats={[
+          { label: "Users", value: 12847, change: 12.5 },
+          { label: "Revenue", value: "$48.2K", change: 8.3 },
+          { label: "Conversion", value: "3.2%", change: -1.4 },
+          { label: "Sessions", value: 45021, change: 15.7 },
+        ]}
+      />
+
+      {/* Chart */}
+      <Chart
+        type="bar"
+        title="Monthly Revenue"
+        labels={["Jan", "Feb", "Mar", "Apr", "May", "Jun"]}
+        datasets={[{ name: "Revenue", data: [
+          { label: "Jan", value: 4200 },
+          { label: "Feb", value: 5800 },
+          { label: "Mar", value: 4900 },
+          { label: "Apr", value: 7200 },
+          { label: "May", value: 6100 },
+          { label: "Jun", value: 8400 },
+        ]}]}
+      />
+
+      {/* Order Summary */}
+      <OrderSummary
+        orderId="ORD-2847"
+        title="Order Summary"
+        lines={[
+          { id: "1", label: "Pro Plan", quantity: 1, unitPrice: 29.00, total: 29.00, status: "confirmed" },
+          { id: "2", label: "Extra Storage", description: "100 GB additional", quantity: 2, unitPrice: 5.00, total: 10.00 },
+          { id: "3", label: "Priority Support", description: "24/7 chat & email", quantity: 1, unitPrice: 9.99, total: 9.99, status: "pending" },
+        ]}
+        subtotal={48.99}
+        tax={4.41}
+        total={53.40}
+        currency="USD"
+        status="confirmed"
+      />
+
+      {/* Link Preview */}
+      <LinkPreview
+        url="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+        title="JavaScript | MDN"
+        description="Comprehensive JavaScript documentation including guides, references, and tutorials."
+        domain="developer.mozilla.org"
+        image="https://avatars.githubusercontent.com/mdn"
+      />
+
+      {/* Weather Widget */}
+      <div className="max-w-sm">
+        <WeatherWidget
+          location="San Francisco, CA"
+          currentTemp={18}
+          condition="partly_cloudy"
+          high={22}
+          low={14}
+          humidity={72}
+          windSpeed={18}
+          feelsLike={16}
+          units="celsius"
+          daily={[
+            { day: "Mon", high: 22, low: 14, condition: "partly_cloudy" },
+            { day: "Tue", high: 20, low: 13, condition: "cloudy" },
+            { day: "Wed", high: 17, low: 11, condition: "rainy" },
+            { day: "Thu", high: 19, low: 12, condition: "sunny" },
+            { day: "Fri", high: 23, low: 15, condition: "sunny" },
+          ]}
+        />
+      </div>
+
+      {/* Question Flow */}
+      <QuestionFlow
+        title="Project Setup"
+        questions={[
+          { id: "framework", type: "select", question: "Which framework?", options: ["React", "Vue", "Svelte", "Angular"], required: true },
+          { id: "typescript", type: "confirm", question: "Use TypeScript?", description: "Recommended for all new projects" },
+          { id: "name", type: "text", question: "Project name", placeholder: "my-project", required: true },
+        ]}
+        answers={qAnswers}
+        onAnswersChange={setQAnswers}
+       receipt={undefined}
+      />
+
+      {/* Preferences Panel */}
+      <PreferencesPanel
+        title="Preferences"
+        preferences={[
+          { type: "toggle", key: "darkMode", label: "Dark Mode", description: "Use dark theme", defaultValue: true },
+          { type: "select", key: "language", label: "Language", options: [{ label: "English", value: "en" }, { label: "Japanese", value: "ja" }, { label: "Spanish", value: "es" }], defaultValue: "en" },
+          { type: "slider", key: "fontSize", label: "Font Size", min: 12, max: 24, step: 1, unit: "px", defaultValue: 16 },
+        ]}
+        values={prefValues}
+        onValuesChange={setPrefValues}
+      />
+
+      {/* Data Table */}
+      <DataTable
+        title="Team Members"
+        columns={[
+          { key: "name", label: "Name" },
+          { key: "role", label: "Role" },
+          { key: "status", label: "Status", format: "status" },
+        ]}
+        rows={[
+          { name: "Alice Chen", role: "Engineer", status: "active" },
+          { name: "Bob Rivera", role: "Designer", status: "active" },
+          { name: "Carol Wu", role: "PM", status: "away" },
+          { name: "Dave Park", role: "Engineer", status: "offline" },
+        ]}
+      />
+
+      {/* Audio */}
+      <Audio
+        src="/audio-sample.mp3"
+        title="Design Review Notes"
+        artist="AI Assistant"
+        duration={245}
+        waveformData={[0.3, 0.6, 0.8, 0.4, 0.2, 0.5, 0.9, 0.7, 0.3, 0.5, 0.8, 0.6, 0.4, 0.7, 0.5, 0.3, 0.6, 0.8, 0.4, 0.2, 0.5, 0.7, 0.9, 0.6, 0.3, 0.5, 0.7, 0.4, 0.2, 0.6, 0.8, 0.5, 0.3, 0.7, 0.4, 0.6, 0.8, 0.3, 0.5, 0.7]}
+      />
+    </div>
+  )
+}
+
+// ─── Demo: Social Posts ──────────────────────────────────────────
+
+function DemoSocialPosts() {
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <InstagramPost
+          username="neman.design"
+          displayName="Neman Design"
+          verified
+          images={["https://picsum.photos/seed/neman1/400/400"]}
+          caption="New component library dropping this week. 22px radius everywhere."
+          likes={2847}
+          comments={142}
+          timestamp="2025-01-15T10:30:00Z"
+          location="San Francisco, CA"
+        />
+
+        <XPost
+          username="neman_ui"
+          handle="neman_ui"
+          verified
+          content="Introducing 28 tool-UI components with Zod validation, receipt states, and neman design tokens. Every component you need for rich AI interactions."
+          likes={512}
+          retweets={89}
+          replies={34}
+          views={12400}
+          timestamp="2h"
+        />
+      </div>
+
+      <ItemCarousel
+        title="Recommended Resources"
+        layout="horizontal"
+        items={[
+          { id: "1", title: "React Docs", description: "Official React documentation", badge: "Free", image: "https://picsum.photos/seed/react/200/200" },
+          { id: "2", title: "TypeScript Handbook", description: "Complete TypeScript guide", image: "https://picsum.photos/seed/ts/200/200" },
+          { id: "3", title: "Tailwind CSS", description: "Utility-first CSS framework", badge: "Popular", image: "https://picsum.photos/seed/tw/200/200" },
+          { id: "4", title: "Next.js Guide", description: "Full-stack React framework", image: "https://picsum.photos/seed/next/200/200" },
+          { id: "5", title: "Radix UI", description: "Accessible component primitives", badge: "New", image: "https://picsum.photos/seed/radix/200/200" },
+        ]}
+      />
+    </div>
+  )
+}
+
+// ─── Demo: Message Draft ──────────────────────────────────────────
+
+function DemoMessageDraft() {
+  const [draft, setDraft] = useState("Hi team, I wanted to follow up on our discussion about the Q2 roadmap...")
+  return (
+    <div className="space-y-4">
+      <MessageDraft
+        title="Email Draft"
+        body={draft}
+        onChange={(body: string) => setDraft(body)}
+        recipient="Product Team"
+        tone="professional"
+        maxLength={500}
+      />
+    </div>
+  )
+}
+
+// ─── Demo: GeoMap ──────────────────────────────────────────────────
+
+function DemoGeoMap() {
+  return (
+    <div className="max-w-lg">
+      <GeoMap
+        title="Office Locations"
+        markers={[
+          { position: { lat: 37.7749, lng: -122.4194 }, label: "SF HQ", description: "Main headquarters" },
+          { position: { lat: 40.7128, lng: -74.006 }, label: "NYC Office", description: "East coast hub" },
+          { position: { lat: 51.5074, lng: -0.1278 }, label: "London", description: "European operations", color: "var(--color-success)" },
+        ]}
+        interactive
+      />
+    </div>
+  )
+}
+
 // ─── Main Page ────────────────────────────────────────────────────
 
 export default function AIPage() {
@@ -503,6 +841,12 @@ export default function AIPage() {
     { id: "input", label: "Input" },
     { id: "sources", label: "Sources" },
     { id: "branching", label: "Branching" },
+    { id: "action-bar", label: "Action Bar" },
+    { id: "error-quote", label: "Error & Quote" },
+    { id: "tool-ui", label: "Tool UI" },
+    { id: "social", label: "Social Posts" },
+    { id: "draft", label: "Message Draft" },
+    { id: "map", label: "Geo Map" },
     { id: "full", label: "Full Chat" },
   ]
 
@@ -641,6 +985,84 @@ export default function AIPage() {
             </div>
             <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoBranching />
+            </div>
+          </section>
+
+          {/* Action Bar */}
+          <section id="action-bar">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Action Bar</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Floating action bars that appear on message hover — copy, edit, regenerate, and feedback.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoActionBar />
+            </div>
+          </section>
+
+          {/* Error & Quote */}
+          <section id="error-quote">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Error & Quote</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Error states with retry and quoted reply blocks for context.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoErrorAndQuote />
+            </div>
+          </section>
+
+          {/* Tool UI */}
+          <section id="tool-ui">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Tool UI Components</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Rich tool call renderers — plans, progress trackers, approvals, data tables, charts, order summaries, and more.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoToolUI />
+            </div>
+          </section>
+
+          {/* Social Posts */}
+          <section id="social">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Social Posts & Carousels</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Render social media posts and item carousels with full visual fidelity.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoSocialPosts />
+            </div>
+          </section>
+
+          {/* Message Draft */}
+          <section id="draft">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Message Draft</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Compose and edit messages with tone selection, character counting, and recipients.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoMessageDraft />
+            </div>
+          </section>
+
+          {/* Geo Map */}
+          <section id="map">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Geo Map</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Interactive map visualization with markers, labels, and coordinate display.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoGeoMap />
             </div>
           </section>
 

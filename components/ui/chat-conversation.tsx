@@ -2,14 +2,19 @@
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { useChatContext } from "@/packages/headless/src"
 
-// ─── Conversation container ──────────────────────────────────────
+// ─── Conversation container (dual-mode) ────────────────────────
 
 function ChatConversation({
+  auto = false,
   className,
   children,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & {
+  /** When true and NemanChatProvider is present, auto-renders all thread messages. */
+  auto?: boolean
+}) {
   const bottomRef = React.useRef<HTMLDivElement>(null)
   const containerRef = React.useRef<HTMLDivElement>(null)
   const [isAtBottom, setIsAtBottom] = React.useState(true)
@@ -86,6 +91,50 @@ function ChatConversation({
   )
 }
 
+// ─── Auto conversation renderer (connected mode) ──────────────
+// Requires NemanChatProvider in the tree. Renders all thread messages automatically.
+
+function ChatConversationAuto() {
+  const ctx = useChatContext()
+  if (!ctx) return null
+
+  const { messages } = ctx.thread
+  const { isStreaming } = ctx.streaming
+
+  return (
+    <ChatConversation auto>
+      {messages.map((msg) => (
+        <div key={msg.id} data-slot="auto-message" data-role={msg.role}>
+          {/* Auto-rendered messages — use <ChatMessage messageId={msg.id}> for full styling */}
+          <div className={cn(
+            "max-w-[75%] rounded-[22px] px-4 py-2.5",
+            msg.role === "user"
+              ? "ml-auto bg-brand text-brand-foreground shadow-[var(--shadow-drop-2)]"
+              : "mr-auto bg-card text-foreground border border-border/50 shadow-[var(--shadow-card)]"
+          )}>
+            {msg.parts.map((part, i) => {
+              if (part.type === "text") return <div key={i} className="text-body-primary">{part.text}</div>
+              if (part.type === "reasoning") return <div key={i} className="text-sm text-muted-foreground italic">{part.text}</div>
+              return null
+            })}
+          </div>
+        </div>
+      ))}
+      {(ctx.thread.isLoading || isStreaming) && (
+        <div className="flex justify-start">
+          <div className="rounded-[22px] bg-card px-4 py-2.5 border border-border/50 shadow-[var(--shadow-card)]">
+            <div className="neman-typing-dots flex items-center gap-1" aria-label="Assistant is typing" role="status">
+              <span className="size-1.5 rounded-full bg-brand/60 animate-bounce" style={{ animationDelay: "0ms" }} />
+              <span className="size-1.5 rounded-full bg-brand/60 animate-bounce" style={{ animationDelay: "150ms" }} />
+              <span className="size-1.5 rounded-full bg-brand/60 animate-bounce" style={{ animationDelay: "300ms" }} />
+            </div>
+          </div>
+        </div>
+      )}
+    </ChatConversation>
+  )
+}
+
 // ─── Empty state ──────────────────────────────────────────────────
 
 function ChatConversationEmpty({
@@ -128,4 +177,4 @@ function ChatConversationEmpty({
   )
 }
 
-export { ChatConversation, ChatConversationEmpty }
+export { ChatConversation, ChatConversationAuto, ChatConversationEmpty }
