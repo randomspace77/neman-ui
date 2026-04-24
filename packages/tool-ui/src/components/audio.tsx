@@ -97,7 +97,7 @@ function Audio({
         <button
           type="button"
           onClick={togglePlay}
-          className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-brand text-white transition-transform duration-150 hover:opacity-90 active:scale-95"
+          className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-200 hover:opacity-90 active:scale-95"
           aria-label={playing ? "Pause" : "Play"}
         >
           {playing ? (
@@ -131,7 +131,7 @@ function Audio({
                     key={i}
                     className={cn(
                       "flex-1 rounded-[1px] transition-colors duration-100 min-w-[2px]",
-                      isPast ? "bg-brand" : "bg-border/40"
+                      isPast ? "bg-primary" : "bg-border/40"
                     )}
                     style={{ height: `${Math.max(bar * 100, 15)}%` }}
                   />
@@ -140,7 +140,7 @@ function Audio({
             </div>
           </div>
           {/* Time display */}
-          <div className="flex justify-between text-[10px] text-muted-foreground tabular-nums">
+          <div className="flex justify-between text-label-primary text-muted-foreground tabular-nums">
             <span>{formatTime(currentTime)}</span>
             {duration != null && <span>{formatTime(duration)}</span>}
           </div>

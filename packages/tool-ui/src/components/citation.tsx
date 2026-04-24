@@ -101,7 +101,7 @@ function Citation({
         onClick={() => !isReadOnly && setOpen((prev: boolean) => !prev)}
         className={cn(
           "flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-200",
-          !isReadOnly && "hover:bg-fill-subtle/60",
+          !isReadOnly && "hover:bg-fill-medium",
           "rounded-[22px]",
         )}
       >
@@ -112,7 +112,7 @@ function Citation({
           viewBox="0 0 14 14"
           fill="none"
           aria-hidden="true"
-          className="shrink-0 text-brand/70"
+          className="shrink-0 text-muted-foreground"
         >
           <path
             d="M7 1L8.5 4.5L12.5 5L9.5 7.5L10.5 11.5L7 9.5L3.5 11.5L4.5 7.5L1.5 5L5.5 4.5L7 1Z"
@@ -216,7 +216,7 @@ function CitationItem({
             {citation.title || extractHostname(citation.url || citation.id)}
           </span>
           {citation.provider && (
-            <span className="shrink-0 rounded-[100px] bg-brand/10 px-1.5 py-0.5 text-brand text-[11px] font-[590]">
+            <span className="shrink-0 rounded-full bg-primary/10 px-1.5 py-0.5 text-primary text-label-primary-bold">
               {citation.provider}
             </span>
           )}
@@ -243,8 +243,8 @@ function CitationItem({
         rel="noopener noreferrer"
         data-slot="citation-item"
         className={cn(
-          "flex items-start gap-2.5 rounded-[10px] px-3 py-2.5 text-label-secondary",
-          "transition-all duration-200 hover:bg-brand/[0.04] hover:text-foreground",
+          "flex items-start gap-2.5 rounded-lg px-3 py-2.5 text-label-secondary",
+          "transition-all duration-200 hover:bg-fill-subtle hover:text-foreground",
           className,
         )}
         >
@@ -257,7 +257,7 @@ function CitationItem({
     <div
       data-slot="citation-item"
       className={cn(
-        "flex items-start gap-2.5 rounded-[10px] px-3 py-2.5 text-label-secondary",
+        "flex items-start gap-2.5 rounded-lg px-3 py-2.5 text-label-secondary",
         isReadOnly && "opacity-80",
         className,
       )}

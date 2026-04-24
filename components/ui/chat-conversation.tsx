@@ -109,7 +109,7 @@ function ChatConversationAuto() {
           <div className={cn(
             "max-w-[75%] rounded-[22px] px-4 py-2.5",
             msg.role === "user"
-              ? "ml-auto bg-brand text-brand-foreground shadow-[var(--shadow-drop-2)]"
+              ? "ml-auto bg-fill-medium text-foreground shadow-[var(--shadow-drop-2)]"
               : "mr-auto bg-card text-foreground border border-border/50 shadow-[var(--shadow-card)]"
           )}>
             {msg.parts.map((part, i) => {
@@ -160,7 +160,7 @@ function ChatConversationEmpty({
       {...props}
     >
       {icon && (
-        <div className="flex size-14 items-center justify-center rounded-[22px] bg-brand/8 text-brand shadow-[var(--shadow-drop-1)]">
+        <div className="flex size-14 items-center justify-center rounded-[22px] bg-fill-subtle text-muted-foreground shadow-[var(--shadow-drop-1)]">
           {icon}
         </div>
       )}

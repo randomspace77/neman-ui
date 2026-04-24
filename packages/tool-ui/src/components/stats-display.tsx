@@ -42,7 +42,7 @@ function StatsDisplay({
     <div
       data-slot="stats-display"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-card p-4",
+        "rounded-[22px] border border-border/50 bg-card p-4 shadow-[var(--shadow-card)] transition-all duration-300",
         className
       )}
       {...props}
@@ -60,12 +60,12 @@ function StatsDisplay({
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="rounded-[14px] border border-border/30 bg-fill-subtle/30 px-3 py-2.5"
+            className="rounded-2xl border border-border/30 bg-fill-subtle px-3 py-2.5"
           >
             <div className="text-label-secondary text-muted-foreground mb-0.5">
               {stat.label}
             </div>
-            <div className="text-body-primary font-[590] text-xl tracking-tight">
+            <div className="text-headline-primary">
               {typeof stat.value === "number"
                 ? stat.value.toLocaleString()
                 : stat.value}

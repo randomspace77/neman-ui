@@ -16,7 +16,7 @@ function ChatActionBar({
     <div
       data-slot="chat-action-bar"
       className={cn(
-        "inline-flex items-center gap-0.5 rounded-[10px] border border-border/50 bg-card shadow-[var(--shadow-drop-2)]",
+        "inline-flex items-center gap-0.5 rounded-lg border border-border/50 bg-card shadow-[var(--shadow-drop-2)]",
         "opacity-0 transition-opacity duration-200 group-hover/message:opacity-100",
         "group-hover:opacity-100",
         className
@@ -44,8 +44,8 @@ function ChatActionBarButton({
       aria-label={label}
       data-slot="chat-action-bar-button"
       className={cn(
-        "inline-flex size-7 items-center justify-center rounded-[8px] text-muted-foreground",
-        "transition-all duration-150 hover:bg-fill-subtle hover:text-foreground active:scale-95",
+        "inline-flex size-7 items-center justify-center rounded-lg text-muted-foreground",
+        "transition-all duration-200 hover:bg-fill-subtle hover:text-foreground active:scale-95",
         className
       )}
       {...props}

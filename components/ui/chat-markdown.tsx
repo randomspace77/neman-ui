@@ -51,7 +51,7 @@ function ChatMarkdown({
           ),
           // Blockquote
           blockquote: ({ children }) => (
-            <blockquote className="mb-3 border-l-2 border-brand/30 pl-3 text-muted-foreground italic last:mb-0">
+            <blockquote className="mb-3 border-l-2 border-border pl-3 text-muted-foreground italic last:mb-0">
               {children}
             </blockquote>
           ),
@@ -73,7 +73,7 @@ function ChatMarkdown({
             // Inline code
             return (
               <code
-                className="rounded-[4px] bg-fill-medium px-1.5 py-0.5 text-[13px] font-mono text-foreground/90"
+                className="rounded-sm bg-fill-medium px-1.5 py-0.5 text-label-secondary font-mono text-foreground/90"
                 {...codeProps}
               >
                 {codeChildren}

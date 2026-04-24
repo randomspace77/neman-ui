@@ -19,7 +19,7 @@ function ChatQuote({
     <div
       data-slot="chat-quote"
       className={cn(
-        "relative flex items-start gap-2 rounded-[10px] border-l-2 border-brand/30 bg-brand/[0.03] px-3 py-2",
+        "relative flex items-start gap-2 rounded-lg border-l-2 border-border bg-fill-subtle px-3 py-2",
         className
       )}
       {...props}

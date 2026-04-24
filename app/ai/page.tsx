@@ -279,7 +279,7 @@ function DemoPromptInput() {
 
   return (
     <div className="mx-auto w-full max-w-[640px]">
-      <div className="rounded-[22px] border border-border/50 bg-card shadow-[var(--shadow-card)] transition-all duration-300 focus-within:border-brand/30 focus-within:shadow-[var(--shadow-drop-3)]">
+      <div className="rounded-[22px] border border-border/50 bg-card shadow-[var(--shadow-card)] transition-all duration-300 focus-within:border-foreground/20 focus-within:shadow-[var(--shadow-drop-3)]">
         {/* Attachments area */}
         <ChatAttachments variant="inline">
           <ChatAttachment
@@ -505,7 +505,7 @@ function insertionSort(arr: number[]): number[] {
 
       {/* Input area below */}
       <div className="border-t border-border/30 p-4">
-        <div className="rounded-[18px] border border-border/50 bg-fill-subtle/60 transition-all duration-300 focus-within:border-brand/30 focus-within:shadow-[var(--shadow-drop-2)]">
+        <div className="rounded-[18px] border border-border/50 bg-fill-subtle/60 transition-all duration-300 focus-within:border-foreground/20 focus-within:shadow-[var(--shadow-drop-2)]">
           <ChatPromptInput>
             <ChatPromptInputBody>
               <ChatPromptInputTextarea placeholder="Ask a follow-up question..." />

@@ -64,7 +64,7 @@ function AutoMessageContent({ message }: { message: Message }) {
           case "tool-call":
             return (
               <div key={i} data-slot="chat-auto-tool-call" className="flex items-center gap-2 text-sm">
-                <span className="rounded-full bg-brand/10 px-2 py-0.5 text-label-primary-bold text-brand">
+                <span className="rounded-full bg-fill-medium px-2 py-0.5 text-label-primary-bold text-foreground">
                   {part.state === "input-streaming" || part.state === "input-available" ? "Running" : part.state === "output-available" ? "Done" : part.state === "output-error" ? "Error" : part.state}
                 </span>
                 <span className="font-[590]">{part.toolName}</span>
@@ -76,7 +76,7 @@ function AutoMessageContent({ message }: { message: Message }) {
                 key={i}
                 src={part.image}
                 alt={part.alt ?? ""}
-                className="max-w-full rounded-[10px]"
+                className="max-w-full rounded-lg"
               />
             )
           case "source":
@@ -112,8 +112,8 @@ function ChatMessageAvatar({
       data-slot="chat-message-avatar"
       className={cn(
         "flex size-8 shrink-0 items-center justify-center rounded-full",
-        "bg-brand/8 text-brand shadow-[var(--shadow-drop-1)]",
-        "transition-all duration-300 group-hover:bg-brand/15 group-hover:text-brand group-hover:shadow-[var(--shadow-drop-2)]",
+        "bg-fill-subtle text-muted-foreground shadow-[var(--shadow-drop-1)]",
+        "transition-all duration-300 group-hover:bg-fill-medium group-hover:text-foreground group-hover:shadow-[var(--shadow-drop-2)]",
         className
       )}
       {...props}
@@ -138,7 +138,7 @@ function ChatMessageContent({
       className={cn(
         "max-w-[75%] space-y-2",
         from === "user" && [
-          "rounded-[22px] bg-brand px-4 py-3 text-brand-foreground text-body-primary",
+          "rounded-[22px] bg-fill-medium px-4 py-3 text-foreground text-body-primary",
           "shadow-[var(--shadow-drop-2)]",
         ],
         from === "assistant" && [
@@ -198,7 +198,7 @@ function ChatMessageAction({
       type="button"
       data-slot="chat-message-action"
       className={cn(
-        "inline-flex size-7 items-center justify-center rounded-[10px] text-muted-foreground transition-all duration-200 hover:bg-fill-subtle hover:text-foreground active:scale-95",
+        "inline-flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-all duration-200 hover:bg-fill-subtle hover:text-foreground active:scale-95",
         className
       )}
       {...props}

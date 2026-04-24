@@ -66,7 +66,7 @@ function TextQuestion({
         onChange={(e) => onChange(e.target.value)}
         placeholder={q.placeholder}
         disabled={disabled}
-        className="w-full rounded-[12px] border border-border/50 bg-card px-3 py-2 text-[14px] text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand"
+        className="w-full rounded-xl border border-border/50 bg-card px-3 py-2 text-body-primary text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-foreground/10 focus:border-foreground/20"
       />
     </div>
   )
@@ -115,9 +115,9 @@ function SelectQuestion({
               onClick={() => handleToggle(option)}
               disabled={disabled}
               className={cn(
-                "rounded-[10px] border px-3 py-1.5 text-[13px] font-[590] transition-all duration-150",
+                "rounded-lg border px-3 py-1.5 text-label-secondary-bold transition-all duration-200",
                 isSelected
-                  ? "border-brand bg-brand/10 text-brand"
+                  ? "border-primary bg-primary/10 text-primary"
                   : "border-border/50 bg-card text-foreground hover:border-border"
               )}
             >
@@ -150,8 +150,8 @@ function ConfirmQuestion({
         onClick={() => onChange(!value)}
         disabled={disabled}
         className={cn(
-          "mt-0.5 inline-flex size-4 shrink-0 items-center justify-center rounded-[8px] border transition-colors duration-150",
-          value ? "border-brand bg-brand text-white" : "border-border/50 bg-card"
+          "mt-0.5 inline-flex size-4 shrink-0 items-center justify-center rounded-md border transition-colors duration-200",
+          value ? "border-primary bg-primary text-primary-foreground" : "border-border/50 bg-card"
         )}
       >
         {value && (
@@ -213,7 +213,7 @@ function QuestionFlow({
     <div
       data-slot="question-flow"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-card p-4 space-y-4",
+        "rounded-[22px] border border-border/50 bg-card p-4 space-y-4 shadow-[var(--shadow-card)]",
         isReadonly && "opacity-80",
         className
       )}
@@ -261,7 +261,7 @@ function QuestionFlow({
         <button
           type="button"
           onClick={() => onSubmit?.(answers)}
-          className="rounded-[12px] bg-brand px-4 py-2 text-[14px] font-[590] text-white transition-all duration-150 hover:opacity-90 active:scale-[0.98]"
+          className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-title-primary transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
         >
           {submitLabel}
         </button>

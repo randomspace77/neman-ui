@@ -48,14 +48,14 @@ function LinkPreview({
       data-slot="link-preview"
       className={cn(
         "group/block flex overflow-hidden rounded-[22px] border border-border/50 bg-card",
-        "transition-all duration-200 hover:border-border hover:shadow-[var(--shadow-drop-2)]",
+        "transition-all duration-300 hover:border-border hover:shadow-[var(--shadow-drop-2)] shadow-[var(--shadow-card)]",
         image ? "flex-row" : "flex-col",
         className
       )}
       {...props}
     >
       {image && (
-        <div className="w-1/3 shrink-0 bg-muted/20 overflow-hidden">
+        <div className="w-1/3 shrink-0 bg-fill-subtle overflow-hidden">
           <img
             src={image}
             alt=""
@@ -63,12 +63,12 @@ function LinkPreview({
           />
         </div>
       )}
-      <div className="flex flex-col justify-center gap-1.5 p-3 min-w-0 flex-1">
+      <div className="flex flex-col justify-center gap-1.5 p-4 min-w-0 flex-1">
         <h4 className="text-label-primary-bold truncate">{title}</h4>
         {description && (
           <p className="text-label-secondary text-muted-foreground line-clamp-2">{description}</p>
         )}
-        <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground/70 mt-0.5">
+        <div className="flex items-center gap-1.5 text-label-primary text-muted-foreground mt-0.5">
           {favicon && (
             <img src={favicon} alt="" className="size-3 rounded-sm" />
           )}

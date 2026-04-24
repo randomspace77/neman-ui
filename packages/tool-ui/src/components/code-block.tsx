@@ -117,7 +117,7 @@ function CodeBlock({
               onClick={handleCopy}
               aria-label={copied ? "Copied" : "Copy code"}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-label-primary transition-all duration-200",
+                "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-label-primary transition-all duration-200",
                 copied
                   ? "bg-success/20 text-success"
                   : "text-[var(--code-surface-foreground)]/35 hover:bg-[var(--code-surface-foreground)]/8 hover:text-[var(--code-surface-foreground)]/70"
@@ -150,7 +150,7 @@ function CodeBlock({
           onClick={handleCopy}
           aria-label={copied ? "Copied" : "Copy code"}
           className={cn(
-            "absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-label-primary transition-all duration-200",
+            "absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-label-primary transition-all duration-200",
             copied
               ? "bg-success/20 text-success opacity-100"
               : "text-[var(--code-surface-foreground)]/30 hover:bg-[var(--code-surface-foreground)]/8 hover:text-[var(--code-surface-foreground)]/70 opacity-0 group-hover:opacity-100"
@@ -162,7 +162,7 @@ function CodeBlock({
 
       {/* Code content */}
       <div className="overflow-x-auto px-4 py-3">
-        <pre className="text-[13px] leading-[20px] text-[var(--code-surface-foreground)]/75">
+        <pre className="text-label-secondary text-[var(--code-surface-foreground)]/75">
           {displayShowLineNumbers ? (
             <code>
               {lines.map((line, index) => (

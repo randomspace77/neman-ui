@@ -77,17 +77,17 @@ function ItemCarousel({
           {items.map((item) => (
             <div
               key={item.id}
-              className="rounded-[14px] border border-border/30 bg-fill-subtle/30 p-3 transition-colors duration-150 hover:border-border/60"
+              className="rounded-2xl border border-border/30 bg-fill-subtle p-3 transition-colors duration-200 hover:border-border/60"
             >
               {item.image && (
-                <img src={item.image} alt="" className="w-full aspect-square rounded-[10px] object-cover mb-2" />
+                <img src={item.image} alt="" className="w-full aspect-square rounded-lg object-cover mb-2" />
               )}
               <div className="text-label-primary-bold truncate">{item.title}</div>
               {item.description && (
                 <div className="text-label-secondary text-muted-foreground line-clamp-2 mt-0.5">{item.description}</div>
               )}
               {item.badge && (
-                <span className="inline-block mt-1 rounded-[8px] bg-brand/10 px-2 py-0.5 text-[10px] font-[590] text-brand">
+                <span className="inline-block mt-1 rounded-md bg-primary/10 px-2 py-0.5 text-label-primary-bold text-primary">
                   {item.badge}
                 </span>
               )}
@@ -129,17 +129,17 @@ function ItemCarousel({
           {items.map((item) => (
             <div
               key={item.id}
-              className="shrink-0 w-44 snap-start rounded-[14px] border border-border/30 bg-fill-subtle/30 p-3 transition-colors duration-150 hover:border-border/60"
+              className="shrink-0 w-44 snap-start rounded-2xl border border-border/30 bg-fill-subtle p-3 transition-colors duration-200 hover:border-border/60"
             >
               {item.image && (
-                <img src={item.image} alt="" className="w-full aspect-square rounded-[10px] object-cover mb-2" />
+                <img src={item.image} alt="" className="w-full aspect-square rounded-lg object-cover mb-2" />
               )}
               <div className="text-label-primary-bold truncate">{item.title}</div>
               {item.description && (
                 <div className="text-label-secondary text-muted-foreground line-clamp-2 mt-0.5">{item.description}</div>
               )}
               {item.badge && (
-                <span className="inline-block mt-1 rounded-[8px] bg-brand/10 px-2 py-0.5 text-[10px] font-[590] text-brand">
+                <span className="inline-block mt-1 rounded-md bg-primary/10 px-2 py-0.5 text-label-primary-bold text-primary">
                   {item.badge}
                 </span>
               )}

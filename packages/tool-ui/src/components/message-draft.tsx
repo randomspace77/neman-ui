@@ -67,7 +67,7 @@ function MessageDraft({
     <div
       data-slot="message-draft"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-card overflow-hidden",
+        "rounded-[22px] border border-border/50 bg-card overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300",
         isReadonly && "opacity-80",
         className
       )}
@@ -84,9 +84,9 @@ function MessageDraft({
               onClick={() => setTone(t)}
               disabled={isReadonly}
               className={cn(
-                "rounded-[10px] px-2 py-0.5 text-[11px] font-[590] transition-colors duration-150",
+                "rounded-lg px-2 py-0.5 text-label-primary-bold transition-colors duration-200",
                 tone === t
-                  ? "bg-brand/10 text-brand"
+                  ? "bg-primary/10 text-primary"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
@@ -98,7 +98,7 @@ function MessageDraft({
 
       {/* Recipient */}
       {recipient && (
-        <div className="px-4 py-2 border-b border-border/20 bg-fill-subtle/20">
+        <div className="px-4 py-2 border-b border-border/20 bg-fill-subtle">
           <span className="text-label-secondary text-muted-foreground">To: </span>
           <span className="text-label-primary">{recipient}</span>
         </div>
@@ -114,11 +114,11 @@ function MessageDraft({
             onChange={(e) => setBody(e.target.value)}
             placeholder={placeholder ?? "Write your message..."}
             maxLength={maxLength ?? undefined}
-            className="w-full min-h-[120px] resize-y rounded-[14px] border border-border/40 bg-transparent px-3 py-2 text-[14px] text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-brand"
+            className="w-full min-h-[120px] resize-y rounded-2xl border border-border/40 bg-transparent px-3 py-2 text-body-primary text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground/20"
           />
         )}
         {maxLength != null && (
-          <div className={cn("text-[11px] mt-1 text-right", isOverLimit ? "text-destructive" : "text-muted-foreground")}>
+          <div className={cn("text-label-primary mt-1 text-right", isOverLimit ? "text-destructive" : "text-muted-foreground")}>
             {charCount}/{maxLength}
           </div>
         )}
@@ -131,7 +131,7 @@ function MessageDraft({
             type="button"
             onClick={() => onSend?.(body)}
             disabled={!body.trim()}
-            className="rounded-[12px] bg-brand px-4 py-2 text-[13px] font-[590] text-white transition-all duration-150 hover:opacity-90 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
+            className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-label-secondary-bold transition-all duration-200 hover:opacity-90 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Send
           </button>

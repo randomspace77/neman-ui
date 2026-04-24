@@ -54,7 +54,7 @@ function ChartBar({
   const barWidth = 100 / Math.max(barCount, 1)
 
   const defaultColors = [
-    "bg-brand",
+    "bg-primary",
     "bg-success",
     "bg-warning",
     "bg-destructive",
@@ -90,7 +90,7 @@ function ChartBar({
                 />
               ))}
             </div>
-            <span className="text-[10px] text-muted-foreground truncate max-w-full">{label}</span>
+            <span className="text-label-primary text-muted-foreground truncate max-w-full">{label}</span>
           </div>
         )
       })}
@@ -113,7 +113,7 @@ function ChartLine({
   const range = maxVal - minVal || 1
 
   const defaultColors = [
-    "var(--color-brand)",
+    "var(--color-primary)",
     "var(--color-success)",
     "var(--color-warning)",
   ]
@@ -151,7 +151,7 @@ function ChartLine({
       {labels && (
         <div className="flex justify-between mt-1">
           {labels.map((label, i) => (
-            <span key={i} className="text-[10px] text-muted-foreground">{label}</span>
+            <span key={i} className="text-label-primary text-muted-foreground">{label}</span>
           ))}
         </div>
       )}
@@ -169,7 +169,7 @@ function ChartPie({
   const total = data.reduce((sum, d) => sum + d.value, 0) || 1
 
   const defaultColors = [
-    "var(--color-brand)",
+    "var(--color-primary)",
     "var(--color-success)",
     "var(--color-warning)",
     "var(--color-destructive)",
@@ -211,7 +211,7 @@ function ChartPie({
       </svg>
       <div className="flex flex-col gap-1.5">
         {slices.map((slice, i) => (
-          <div key={i} className="flex items-center gap-2 text-[12px]">
+          <div key={i} className="flex items-center gap-2 text-label-primary">
             <span
               className="inline-block size-2.5 rounded-full shrink-0"
               style={{ backgroundColor: slice.color }}
@@ -241,7 +241,7 @@ function Chart({
         {props.type === "line" && <ChartLine labels={props.labels} datasets={props.datasets} />}
         {props.type === "pie" && <ChartPie labels={props.labels} datasets={props.datasets} />}
         {(props.xAxisLabel || props.yAxisLabel) && (
-          <div className="flex justify-between mt-2 text-[11px] text-muted-foreground">
+          <div className="flex justify-between mt-2 text-label-primary text-muted-foreground">
             <span>{props.xAxisLabel}</span>
             <span>{props.yAxisLabel}</span>
           </div>

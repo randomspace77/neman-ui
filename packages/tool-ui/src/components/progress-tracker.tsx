@@ -53,9 +53,9 @@ function StepDot({ status }: { status: ProgressStepStatus }) {
         <div
           data-slot="progress-dot"
           data-status="running"
-          className={cn(base, "bg-brand border-2 border-brand/60 ring-4 ring-brand/10")}
+          className={cn(base, "bg-primary border-2 border-primary/60 ring-4 ring-foreground/10")}
         >
-          <div className="size-1.5 rounded-full bg-brand-foreground animate-pulse" />
+          <div className="size-1.5 rounded-full bg-primary-foreground animate-pulse" />
         </div>
       )
     case "complete":
@@ -145,9 +145,9 @@ function ProgressTrackerHorizontal({
               <div className="text-center min-w-0">
                 <div
                   className={cn(
-                    "text-label-secondary-bold font-[590] truncate",
+                    "text-label-secondary-bold truncate",
                     step.status === "complete" && "text-foreground",
-                    step.status === "running" && "text-brand",
+                    step.status === "running" && "text-primary",
                     step.status === "pending" && "text-muted-foreground",
                     step.status === "error" && "text-destructive"
                   )}
@@ -201,9 +201,9 @@ function ProgressTrackerVertical({
             <div className={cn("pb-4 min-w-0", isLast && "pb-0")}>
               <div
                 className={cn(
-                  "text-body-primary font-[590]",
+                  "text-title-primary",
                   step.status === "complete" && "text-foreground",
-                  step.status === "running" && "text-brand",
+                  step.status === "running" && "text-primary",
                   step.status === "pending" && "text-muted-foreground",
                   step.status === "error" && "text-destructive"
                 )}
@@ -246,7 +246,7 @@ function ProgressTrackerRoot({
       <div
         data-slot="progress-tracker-card"
         data-receipt="true"
-        className="rounded-[22px] border border-border/50 bg-card p-5 shadow-[var(--shadow-drop-1)]"
+        className="rounded-[22px] border border-border/50 bg-card p-5 shadow-[var(--shadow-card)]"
       >
         <div className="text-title-secondary font-[590] mb-4">Progress</div>
         {orientation === "horizontal" ? (

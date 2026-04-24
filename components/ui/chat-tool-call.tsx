@@ -17,9 +17,9 @@ type ToolState =
 function getStatusConfig(state: ToolState) {
   switch (state) {
     case "input-streaming":
-      return { label: "Running", color: "text-brand", bg: "bg-brand/10" }
+      return { label: "Running", color: "text-foreground", bg: "bg-fill-medium" }
     case "input-available":
-      return { label: "Running", color: "text-brand", bg: "bg-brand/10" }
+      return { label: "Running", color: "text-foreground", bg: "bg-fill-medium" }
     case "output-available":
       return { label: "Done", color: "text-success", bg: "bg-success/10" }
     case "output-error":
@@ -78,7 +78,7 @@ function ChatToolCall({
       <button
         aria-expanded={open}
         onClick={() => setOpen((o: boolean) => !o)}
-        className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-subtle/60 rounded-[22px]"
+        className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-medium rounded-[22px]"
       >
         {/* Wrench icon */}
         <svg

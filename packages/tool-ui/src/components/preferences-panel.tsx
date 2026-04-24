@@ -85,9 +85,9 @@ function PreferenceSelect({
             type="button"
             onClick={() => onChange(opt.value)}
             className={cn(
-              "rounded-[10px] border px-3 py-1.5 text-[13px] font-[590] transition-all duration-150",
+              "rounded-lg border px-3 py-1.5 text-label-secondary-bold transition-all duration-200",
               value === opt.value
-                ? "border-brand bg-brand/10 text-brand"
+                ? "border-primary bg-primary/10 text-primary"
                 : "border-border/50 bg-card text-foreground hover:border-border"
             )}
           >
@@ -125,7 +125,7 @@ function PreferenceToggle({
         onClick={() => onChange(!value)}
         className={cn(
           "relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200",
-          value ? "bg-brand" : "bg-border"
+          value ? "bg-primary" : "bg-border"
         )}
       >
         <span
@@ -174,12 +174,12 @@ function PreferenceSlider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-1.5 rounded-full appearance-none cursor-pointer bg-border/40 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-[var(--shadow-drop-1)]"
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer bg-border/40 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:shadow-[var(--shadow-drop-1)]"
         style={{
-          background: `linear-gradient(to right, var(--color-brand) ${pct}%, var(--color-border) ${pct}%)`,
+          background: `linear-gradient(to right, var(--color-primary) ${pct}%, var(--color-border) ${pct}%)`,
         }}
       />
-      <div className="flex justify-between text-[10px] text-muted-foreground">
+      <div className="flex justify-between text-label-primary text-muted-foreground">
         <span>{pref.min}{pref.unit}</span>
         <span>{pref.max}{pref.unit}</span>
       </div>
@@ -229,7 +229,7 @@ function PreferencesPanel({
     <div
       data-slot="preferences-panel"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-card p-4 space-y-4",
+        "rounded-[22px] border border-border/50 bg-card p-4 space-y-4 shadow-[var(--shadow-card)] transition-all duration-300",
         isReadonly && "opacity-80",
         className
       )}

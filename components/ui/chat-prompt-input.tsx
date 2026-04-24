@@ -171,7 +171,7 @@ function ChatPromptInputAction({
     <button
       data-slot="chat-prompt-input-action"
       className={cn(
-        "inline-flex size-8 items-center justify-center rounded-[10px] text-muted-foreground",
+        "inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground",
         "transition-all duration-200 hover:bg-fill-subtle hover:text-foreground active:scale-95",
         className
       )}
@@ -199,7 +199,7 @@ function ChatPromptInputSubmit({
       aria-label="Send message"
       disabled={isDisabled}
       className={cn(
-        "inline-flex size-8 items-center justify-center rounded-full bg-brand text-brand-foreground",
+        "inline-flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground",
         "shadow-[var(--shadow-drop-2)]",
         "transition-all duration-200 hover:shadow-[var(--shadow-drop-3)] hover:opacity-90 active:scale-[0.98]",
         "disabled:opacity-30 disabled:pointer-events-none disabled:shadow-none",

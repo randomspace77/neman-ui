@@ -39,7 +39,7 @@ function ChatSources({
       <button
         aria-expanded={open}
         onClick={() => setOpen((o: boolean) => !o)}
-        className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-subtle/60 rounded-[22px]"
+        className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-medium rounded-[22px]"
       >
         <svg
           width="14"
@@ -47,7 +47,7 @@ function ChatSources({
           viewBox="0 0 14 14"
           fill="none"
           aria-hidden="true"
-          className="shrink-0 text-brand/70"
+          className="shrink-0 text-muted-foreground"
         >
           <path
             d="M7 1L8.5 4.5L12.5 5L9.5 7.5L10.5 11.5L7 9.5L3.5 11.5L4.5 7.5L1.5 5L5.5 4.5L7 1Z"
@@ -107,13 +107,13 @@ function ChatSource({
       rel="noopener noreferrer"
       data-slot="chat-source"
       className={cn(
-        "flex items-center gap-2.5 rounded-[10px] px-3 py-2 text-label-secondary",
-        "transition-all duration-200 hover:bg-brand/[0.04] hover:text-foreground",
+        "flex items-center gap-2.5 rounded-lg px-3 py-2 text-label-secondary",
+        "transition-all duration-200 hover:bg-fill-subtle hover:text-foreground",
         className
       )}
       {...props}
     >
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0 text-brand">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0 text-muted-foreground">
         <path d="M7 1L3 5H5V9H9V5H11L7 1Z" fill="currentColor" />
       </svg>
       <span className="truncate font-[590] text-foreground">{title}</span>

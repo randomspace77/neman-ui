@@ -215,7 +215,7 @@ function ImageGallery({
             className={cn(
               "group relative overflow-hidden rounded-[22px] border border-border/50 bg-card",
               "shadow-[var(--shadow-drop-1)] transition-all duration-300",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand focus-visible:ring-offset-background",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-background",
               !isReadOnly && "hover:border-foreground/15 hover:shadow-[var(--shadow-drop-2)] hover:scale-[1.02] cursor-pointer",
               isReadOnly && "cursor-default",
             )}
@@ -237,7 +237,7 @@ function ImageGallery({
               {/* Receipt indicator */}
               {isReadOnly && receipt && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                  <div className="flex items-center justify-center size-8 rounded-full bg-brand/20 text-brand">
+                  <div className="flex items-center justify-center size-8 rounded-full bg-fill-medium text-foreground">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                       <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

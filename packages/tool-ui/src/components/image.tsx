@@ -79,8 +79,8 @@ function Image({
       </div>
       {(caption || source) && (
         <div className="px-3 py-2 space-y-0.5">
-          {caption && <p className="text-label-primary text-[13px]">{caption}</p>}
-          {source && <p className="text-label-secondary text-muted-foreground text-[11px]">{source}</p>}
+          {caption && <p className="text-label-secondary">{caption}</p>}
+          {source && <p className="text-label-primary text-muted-foreground">{source}</p>}
         </div>
       )}
     </div>

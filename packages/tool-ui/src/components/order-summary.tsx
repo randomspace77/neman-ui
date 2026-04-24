@@ -41,9 +41,9 @@ export const OrderSummaryContract = defineToolUiContract({
 
 const statusConfig: Record<string, { label: string; color: string; bg: string }> = {
   pending: { label: "Pending", color: "text-warning", bg: "bg-warning/10" },
-  processing: { label: "Processing", color: "text-brand", bg: "bg-brand/10" },
+  processing: { label: "Processing", color: "text-foreground", bg: "bg-fill-medium" },
   confirmed: { label: "Confirmed", color: "text-success", bg: "bg-success/10" },
-  shipped: { label: "Shipped", color: "text-brand", bg: "bg-brand/10" },
+  shipped: { label: "Shipped", color: "text-foreground", bg: "bg-fill-medium" },
   delivered: { label: "Delivered", color: "text-success", bg: "bg-success/10" },
   cancelled: { label: "Cancelled", color: "text-destructive", bg: "bg-destructive/10" },
 }
@@ -76,7 +76,7 @@ function OrderSummary({
     <div
       data-slot="order-summary"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-card overflow-hidden",
+        "rounded-[22px] border border-border/50 bg-card overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300",
         className
       )}
       {...props}
@@ -88,7 +88,7 @@ function OrderSummary({
           <span className="text-label-secondary text-muted-foreground">#{orderId}</span>
         </div>
         {statusInfo && (
-          <span className={cn("inline-flex items-center gap-1 rounded-[10px] px-2.5 py-0.5 text-label-primary-bold", statusInfo.bg, statusInfo.color)}>
+          <span className={cn("inline-flex items-center gap-1 rounded-lg px-2.5 py-0.5 text-label-primary-bold", statusInfo.bg, statusInfo.color)}>
             {statusInfo.label}
           </span>
         )}
@@ -104,7 +104,7 @@ function OrderSummary({
                 <div className="flex items-center gap-2">
                   <span className="text-body-primary truncate">{line.label}</span>
                   {lineStatus && (
-                    <span className={cn("inline-flex items-center rounded-[8px] px-1.5 py-0.5 text-[10px]", lineStatus.bg, lineStatus.color)}>
+                    <span className={cn("inline-flex items-center rounded-md px-1.5 py-0.5 text-label-primary", lineStatus.bg, lineStatus.color)}>
                       {lineStatus.label}
                     </span>
                   )}
@@ -120,7 +120,7 @@ function OrderSummary({
                   </span>
                 )}
                 {line.total != null && (
-                  <div className="text-body-primary font-[590]">{formatMoney(line.total, currency)}</div>
+                  <div className="text-title-primary">{formatMoney(line.total, currency)}</div>
                 )}
               </div>
             </div>
@@ -129,7 +129,7 @@ function OrderSummary({
       </div>
 
       {/* Totals */}
-      <div className="border-t border-border/30 bg-fill-subtle/20 px-4 py-3 space-y-1">
+      <div className="border-t border-border/30 bg-fill-subtle px-4 py-3 space-y-1">
         {subtotal != null && (
           <div className="flex justify-between text-label-secondary text-muted-foreground">
             <span>Subtotal</span>

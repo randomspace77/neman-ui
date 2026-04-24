@@ -75,8 +75,8 @@ function ChatAttachment({
       {/* File icon + info */}
       {(!isImage || !thumbnail) && (
         <>
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-[10px] bg-brand/8 text-brand">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-brand/70">
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-fill-subtle text-muted-foreground">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-muted-foreground">
               <path
                 d="M4 1.5H9.5L13 5V13C13 13.8 12.3 14.5 11.5 14.5H4C3.2 14.5 2.5 13.8 2.5 13V3C2.5 2.2 3.2 1.5 4 1.5Z"
                 stroke="currentColor"

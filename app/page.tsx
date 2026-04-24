@@ -162,7 +162,7 @@ function PrinciplesSection() {
               key={item.title}
               className="group rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-drop-4)]"
             >
-              <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-fill-subtle text-foreground transition-colors duration-300 group-hover:bg-brand/10 group-hover:text-brand">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-fill-subtle text-foreground transition-colors duration-300 group-hover:bg-fill-medium group-hover:text-foreground">
                 {item.icon}
               </div>
               <h3 className="text-title-primary mb-2 font-[590]">{item.title}</h3>

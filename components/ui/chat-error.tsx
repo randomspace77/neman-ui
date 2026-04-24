@@ -52,10 +52,10 @@ function ChatError({
         <button
           onClick={onRetry}
           className={cn(
-            "shrink-0 inline-flex items-center gap-1.5 rounded-[10px] px-3 py-1.5",
+            "shrink-0 inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5",
             "text-label-primary text-destructive",
             "border border-destructive/30 bg-destructive/5",
-            "transition-all duration-150 hover:bg-destructive/10 hover:border-destructive/50 active:scale-[0.98]"
+            "transition-all duration-200 hover:bg-destructive/10 hover:border-destructive/50 active:scale-[0.98]"
           )}
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">

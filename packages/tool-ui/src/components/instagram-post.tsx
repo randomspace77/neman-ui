@@ -76,26 +76,26 @@ function InstagramPost({
     >
       {/* Header */}
       <div className="flex items-center gap-2.5 px-3 py-2.5">
-        <div className="size-8 rounded-full bg-gradient-to-br from-brand via-warning to-destructive p-[2px]">
+        <div className="size-8 rounded-full bg-gradient-to-br from-primary via-warning to-destructive p-[2px]">
           {avatar ? (
             <img src={avatar} alt="" className="size-full rounded-full object-cover border-2 border-card" />
           ) : (
-            <div className="size-full rounded-full bg-fill-subtle flex items-center justify-center text-[12px] font-[590]">
+            <div className="size-full rounded-full bg-fill-subtle flex items-center justify-center text-label-primary-bold">
               {(displayName ?? username)[0].toUpperCase()}
             </div>
           )}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1">
-            <span className="text-label-primary-bold text-[13px] truncate">{username}</span>
+            <span className="text-label-primary-bold text-label-secondary truncate">{username}</span>
             {verified && (
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-label="Verified">
-                <circle cx="6" cy="6" r="5.5" fill="var(--color-brand)" />
+                <circle cx="6" cy="6" r="5.5" fill="var(--color-primary)" />
                 <path d="M3.5 6L5.5 8L8.5 4.5" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             )}
           </div>
-          {location && <span className="text-[11px] text-muted-foreground">{location}</span>}
+          {location && <span className="text-label-primary text-muted-foreground">{location}</span>}
         </div>
       </div>
 
@@ -137,7 +137,7 @@ function InstagramPost({
                   onClick={() => setCurrentImage(i)}
                   className={cn(
                     "size-1.5 rounded-full transition-colors",
-                    i === currentImage ? "bg-brand" : "bg-card/50"
+                    i === currentImage ? "bg-primary" : "bg-card/50"
                   )}
                   aria-label={`Image ${i + 1}`}
                 />
@@ -149,18 +149,18 @@ function InstagramPost({
 
       {/* Engagement */}
       <div className="px-3 py-2 space-y-1.5">
-        <div className="flex items-center gap-3 text-[13px]">
+        <div className="flex items-center gap-3 text-label-secondary">
           {likes != null && <span className="font-[590]">{formatCount(likes)} likes</span>}
           {comments != null && <span className="text-muted-foreground">{formatCount(comments)} comments</span>}
         </div>
         {caption && (
-          <p className="text-[13px] line-clamp-2">
+          <p className="text-label-secondary line-clamp-2">
             <span className="font-[590]">{username}</span>{" "}
             {caption}
           </p>
         )}
         {timestamp && (
-          <time className="text-[10px] text-muted-foreground uppercase">{formatRelativeTime(timestamp)}</time>
+          <time className="text-label-primary text-muted-foreground uppercase">{formatRelativeTime(timestamp)}</time>
         )}
       </div>
     </div>

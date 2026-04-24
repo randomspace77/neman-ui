@@ -99,7 +99,7 @@ function Terminal({
         <button
           onClick={() => copy(allText, "terminal-content")}
           className={cn(
-            "flex items-center gap-1 rounded-[10px] px-2 py-1 text-label-primary",
+            "flex items-center gap-1 rounded-lg px-2 py-1 text-label-primary",
             "text-white/50 transition-all duration-200 hover:text-white/90 hover:bg-white/5",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
           )}
@@ -129,7 +129,7 @@ function Terminal({
           {command && (
             <>
               {workingDirectory && <span className="text-white/20">$</span>}
-              <span className="text-label-primary text-brand/70 font-mono">{command}</span>
+              <span className="text-label-primary text-muted-foreground font-mono">{command}</span>
             </>
           )}
         </div>
@@ -153,7 +153,7 @@ function Terminal({
             )}
           >
             {line.type === "input" && (
-              <span className="shrink-0 select-none text-brand/80" aria-hidden="true">
+              <span className="shrink-0 select-none text-muted-foreground/80" aria-hidden="true">
                 $
               </span>
             )}

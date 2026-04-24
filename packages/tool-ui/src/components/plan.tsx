@@ -43,7 +43,7 @@ function getStepStatusConfig(status: StepStatus) {
     case "pending":
       return { label: "Pending", color: "text-muted-foreground", bg: "bg-fill-subtle", border: "border-border" }
     case "running":
-      return { label: "Running", color: "text-brand", bg: "bg-brand/10", border: "border-brand/20" }
+      return { label: "Running", color: "text-foreground", bg: "bg-fill-medium", border: "border-foreground/15" }
     case "complete":
       return { label: "Complete", color: "text-success", bg: "bg-success/10", border: "border-success/20" }
     case "error":
@@ -73,7 +73,7 @@ function StepIcon({ status, className }: { status: StepStatus; className?: strin
           height="20"
           viewBox="0 0 20 20"
           fill="none"
-          className={cn("shrink-0 text-brand animate-spin", className)}
+          className={cn("shrink-0 text-foreground animate-spin", className)}
           aria-label="Running"
         >
           <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="2" strokeOpacity="0.25" />
@@ -175,7 +175,7 @@ function PlanRoot({
                   <div className="flex-1 min-w-0 pt-0.5">
                     <div className="flex items-center gap-2">
                       <span className={cn(
-                        "text-body-primary font-[590]",
+                        "text-title-primary",
                         step.status === "pending" && "text-muted-foreground",
                         step.status === "complete" && "text-foreground",
                         className
@@ -235,7 +235,7 @@ function PlanCompact({
       steps={steps}
       compact
       choice={choice}
-      className={cn("rounded-[16px] border-border/50", className)}
+      className={cn("rounded-2xl border-border/50", className)}
       {...props}
     />
   )

@@ -166,7 +166,7 @@ function DataTable({
             <span
               data-slot="data-table-badge"
               className={cn(
-                "inline-flex items-center rounded-[100px] px-2 py-0.5 text-label-primary font-[590] whitespace-nowrap",
+                "inline-flex items-center rounded-full px-2 py-0.5 text-label-primary-bold whitespace-nowrap",
                 variant === "success" && "bg-success/10 text-success",
                 variant === "warning" && "bg-warning/10 text-warning",
                 variant === "destructive" && "bg-destructive/10 text-destructive",
@@ -224,7 +224,7 @@ function DataTable({
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-body-primary">
           <thead>
-            <tr className="border-b border-border/30 bg-fill-subtle/60">
+            <tr className="border-b border-border/30 bg-fill-medium">
               {columns.map((column) => (
                 <th
                   key={column.key}
@@ -256,8 +256,8 @@ function DataTable({
                 key={rowIndex}
                 className={cn(
                   "border-b border-border/20 last:border-b-0 transition-colors duration-200",
-                  rowIndex % 2 === 1 && "bg-fill-subtle/40",
-                  !isReadOnly && "hover:bg-fill-subtle/80",
+                  rowIndex % 2 === 1 && "bg-fill-subtle",
+                  !isReadOnly && "hover:bg-fill-medium",
                 )}
               >
                 {columns.map((column) => (

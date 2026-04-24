@@ -49,8 +49,8 @@ function ChatReasoning({
     <div
       data-slot="chat-reasoning"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-brand/[0.03] transition-all duration-300",
-        isStreaming && "border-brand/20 bg-brand/[0.05]",
+        "rounded-[22px] border border-border/50 bg-fill-subtle transition-all duration-300",
+        isStreaming && "border-primary/20 bg-fill-medium",
         className
       )}
       {...props}
@@ -58,7 +58,7 @@ function ChatReasoning({
       <button
         aria-expanded={open}
         onClick={() => setOpen((o: boolean) => !o)}
-        className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-subtle/60 rounded-[22px]"
+        className="flex w-full items-center gap-2.5 px-4 py-3 text-left transition-colors duration-200 hover:bg-fill-medium rounded-[22px]"
       >
         <svg
           width="16"
@@ -67,8 +67,8 @@ function ChatReasoning({
           fill="none"
           aria-hidden="true"
           className={cn(
-            "shrink-0 text-brand/60 transition-transform duration-200",
-            open && "rotate-90 text-brand"
+            "shrink-0 text-muted-foreground transition-transform duration-200",
+            open && "rotate-90 text-foreground"
           )}
         >
           <path
@@ -81,7 +81,7 @@ function ChatReasoning({
         </svg>
         <span className={cn(
           "text-label-secondary-bold transition-colors duration-200",
-          isStreaming ? "text-brand" : "text-muted-foreground"
+          isStreaming ? "text-foreground" : "text-muted-foreground"
         )}>
           {isStreaming ? (
             <span className="inline-flex items-center gap-1.5">

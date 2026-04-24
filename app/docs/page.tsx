@@ -239,7 +239,7 @@ export default function DocsPage() {
         <section className="mb-20">
           <h2 className="text-headline-primary font-[590] mb-2">Radius System</h2>
           <p className="text-body-primary text-muted-foreground mb-8">
-            The core radius is <strong>22px</strong> (<code className="text-brand font-mono">--radius: 1.375rem</code>),
+            The core radius is <strong>22px</strong> (<code className="font-mono text-foreground">--radius: 1.375rem</code>),
             scaled through a multiplicative system.
           </p>
 
@@ -256,7 +256,7 @@ export default function DocsPage() {
             ].map((item) => (
               <div key={item.name} className="rounded-[22px] border border-border bg-card p-5 shadow-[var(--shadow-card)] flex flex-col items-center gap-3">
                 <div
-                  className="size-16 bg-brand/10 border-2 border-brand/30 flex items-center justify-center text-label-primary-bold text-brand"
+                  className="size-16 bg-fill-medium border-2 border-border flex items-center justify-center text-label-primary-bold text-foreground"
                   style={{ borderRadius: item.demo }}
                 >
                   {item.px}
@@ -287,7 +287,7 @@ export default function DocsPage() {
               { name: "Reasoning Dots", desc: "Progressive dot indicator (... animation)", keyframe: "neman-dot-pulse" },
             ].map((item) => (
               <div key={item.name} className="flex items-start gap-4">
-                <div className="size-2 mt-2 rounded-full bg-brand shrink-0" />
+                <div className="size-2 mt-2 rounded-full bg-foreground shrink-0" />
                 <div>
                   <div className="text-body-primary font-[590]">{item.name}</div>
                   <div className="text-body-primary text-muted-foreground">{item.desc}</div>
@@ -386,7 +386,7 @@ pnpm build`}</code>
                 "Inter + Libre Baskerville — Typography",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-2">
-                  <div className="size-1.5 mt-2 rounded-full bg-brand shrink-0" />
+                  <div className="size-1.5 mt-2 rounded-full bg-foreground shrink-0" />
                   <span className="text-body-primary text-muted-foreground">{item}</span>
                 </div>
               ))}

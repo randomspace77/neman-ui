@@ -70,23 +70,23 @@ function LinkedInPost({
           {authorAvatar ? (
             <img src={authorAvatar} alt="" className="size-full object-cover" />
           ) : (
-            <span className="text-[14px] font-[590] text-brand">{authorName[0]?.toUpperCase()}</span>
+            <span className="text-title-primary">{authorName[0]?.toUpperCase()}</span>
           )}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-label-primary-bold text-[14px] truncate">{authorName}</div>
+          <div className="text-title-primary truncate">{authorName}</div>
           {authorHeadline && (
-            <div className="text-[11px] text-muted-foreground line-clamp-1">{authorHeadline}</div>
+            <div className="text-label-primary text-muted-foreground line-clamp-1">{authorHeadline}</div>
           )}
           {timestamp && (
-            <time className="text-[10px] text-muted-foreground/70">{timestamp}</time>
+            <time className="text-label-primary text-muted-foreground">{timestamp}</time>
           )}
         </div>
       </div>
 
       {/* Content */}
       <div className="px-3.5 pb-2.5">
-        <p className="text-[14px] whitespace-pre-wrap line-clamp-6">{content}</p>
+        <p className="text-body-primary whitespace-pre-wrap line-clamp-6">{content}</p>
       </div>
 
       {/* Image */}
@@ -100,15 +100,15 @@ function LinkedInPost({
           href={articleUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="block mx-3.5 mb-2.5 rounded-[14px] border border-border/40 overflow-hidden hover:border-border transition-colors"
+          className="block mx-3.5 mb-2.5 rounded-2xl border border-border/40 overflow-hidden hover:border-border transition-colors"
         >
           {articleImage && (
             <img src={articleImage} alt="" className="w-full h-32 object-cover" />
           )}
           <div className="p-2.5">
-            <h5 className="text-label-primary-bold text-[13px] line-clamp-2">{articleTitle}</h5>
+            <h5 className="text-label-secondary-bold line-clamp-2">{articleTitle}</h5>
             {articleDescription && (
-              <p className="text-[11px] text-muted-foreground line-clamp-1 mt-0.5">{articleDescription}</p>
+              <p className="text-label-primary text-muted-foreground line-clamp-1 mt-0.5">{articleDescription}</p>
             )}
           </div>
         </a>
@@ -116,7 +116,7 @@ function LinkedInPost({
 
       {/* Engagement bar */}
       {(likes != null || comments != null || reposts != null) && (
-        <div className="flex items-center gap-3 px-3.5 py-2 border-t border-border/20 text-[12px] text-muted-foreground">
+        <div className="flex items-center gap-3 px-3.5 py-2 border-t border-border/20 text-label-primary text-muted-foreground">
           {likes != null && <span>{formatCount(likes)} reactions</span>}
           {comments != null && <span>{formatCount(comments)} comments</span>}
           {reposts != null && <span>{formatCount(reposts)} reposts</span>}

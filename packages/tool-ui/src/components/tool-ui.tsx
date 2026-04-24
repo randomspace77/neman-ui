@@ -74,9 +74,9 @@ const ToolUIContext = React.createContext<{
 function getStatusConfig(status: ToolCallState) {
   switch (status) {
     case "input-streaming":
-      return { label: "Running", color: "text-brand", bg: "bg-brand/10", border: "border-brand/20" }
+      return { label: "Running", color: "text-foreground", bg: "bg-fill-medium", border: "border-foreground/15" }
     case "input-available":
-      return { label: "Running", color: "text-brand", bg: "bg-brand/10", border: "border-brand/20" }
+      return { label: "Running", color: "text-foreground", bg: "bg-fill-medium", border: "border-foreground/15" }
     case "output-available":
       return { label: "Done", color: "text-success", bg: "bg-success/10", border: "border-success/20" }
     case "output-error":
@@ -208,7 +208,7 @@ function ToolUIAction({
     >
       {executing ? "..." : confirming ? confirmLabel : children}
       {shortcut && !confirming && (
-        <kbd className="ml-2 text-[11px] text-muted-foreground opacity-60">{shortcut}</kbd>
+        <kbd className="ml-2 text-label-primary text-muted-foreground opacity-60">{shortcut}</kbd>
       )}
     </button>
   )

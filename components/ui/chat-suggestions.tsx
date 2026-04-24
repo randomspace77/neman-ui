@@ -38,7 +38,7 @@ function ChatSuggestion({
         "inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-card px-3.5 py-1.5",
         "text-label-secondary text-muted-foreground",
         "shadow-[var(--shadow-drop-1)]",
-        "transition-all duration-200 hover:border-brand/20 hover:bg-brand/[0.04] hover:text-foreground hover:shadow-[var(--shadow-drop-2)]",
+        "transition-all duration-200 hover:border-foreground/15 hover:bg-fill-subtle hover:text-foreground hover:shadow-[var(--shadow-drop-2)]",
         "active:scale-[0.97]",
         className
       )}

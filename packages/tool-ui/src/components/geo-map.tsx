@@ -114,20 +114,20 @@ function GeoMap({
             >
               {/* Pin */}
               <div className={cn(
-                "flex items-center justify-center transition-transform duration-150",
+                "flex items-center justify-center transition-transform duration-200",
                 interactive && "hover:scale-110 cursor-pointer",
               )}>
                 <svg width="24" height="32" viewBox="0 0 24 32" aria-hidden="true">
                   <path
                     d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0z"
-                    fill={marker.color ?? "var(--color-brand)"}
+                    fill={marker.color ?? "var(--color-primary)"}
                   />
                   <circle cx="12" cy="12" r="4" fill="var(--color-card)" />
                 </svg>
               </div>
               {/* Label */}
               {marker.label && !selectedMarker && selectedMarker !== 0 && (
-                <span className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-[8px] bg-card px-2 py-0.5 text-[10px] font-[590] shadow-[var(--shadow-drop-2)]">
+                <span className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-card px-2 py-0.5 text-label-primary-bold shadow-[var(--shadow-drop-2)]">
                   {marker.label}
                 </span>
               )}
@@ -136,12 +136,12 @@ function GeoMap({
         })}
 
         {/* Coordinate display */}
-        <div className="absolute bottom-2 right-2 rounded-[8px] bg-foreground/70 px-2 py-0.5 text-[10px] text-card tabular-nums">
+        <div className="absolute bottom-2 right-2 rounded-md bg-foreground/70 px-2 py-0.5 text-label-primary text-card tabular-nums">
           {mapCenter.lat.toFixed(4)}, {mapCenter.lng.toFixed(4)}
         </div>
 
         {/* Zoom badge */}
-        <div className="absolute top-2 left-2 rounded-[8px] bg-foreground/70 px-2 py-0.5 text-[10px] text-card">
+        <div className="absolute top-2 left-2 rounded-md bg-foreground/70 px-2 py-0.5 text-label-primary text-card">
           z{zoom}
         </div>
       </div>
@@ -152,7 +152,7 @@ function GeoMap({
           <div className="flex items-center gap-2">
             <div
               className="size-3 rounded-full shrink-0"
-              style={{ backgroundColor: markers[selectedMarker].color ?? "var(--color-brand)" }}
+              style={{ backgroundColor: markers[selectedMarker].color ?? "var(--color-primary)" }}
             />
             <span className="text-label-primary-bold">
               {markers[selectedMarker].label ?? `Marker ${selectedMarker + 1}`}
@@ -163,7 +163,7 @@ function GeoMap({
               {markers[selectedMarker].description}
             </p>
           )}
-          <span className="text-[10px] text-muted-foreground tabular-nums">
+          <span className="text-label-primary text-muted-foreground tabular-nums">
             {markers[selectedMarker].position.lat.toFixed(6)}, {markers[selectedMarker].position.lng.toFixed(6)}
           </span>
         </div>

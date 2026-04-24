@@ -12,7 +12,7 @@ const buttonVariants = cva(
           "bg-primary text-primary-foreground hover:opacity-80 active:scale-[0.98]",
         secondary:
           "bg-fill-subtle text-foreground hover:bg-fill-medium active:scale-[0.98] active:opacity-80",
-        blue: "bg-brand text-brand-foreground hover:opacity-80 active:scale-[0.98] disabled:bg-brand/50",
+        blue: "bg-primary text-primary-foreground hover:opacity-80 active:scale-[0.98] disabled:opacity-50",
         outline:
           "border border-border bg-background hover:bg-fill-subtle hover:text-foreground active:scale-[0.98] active:opacity-80",
         ghost:

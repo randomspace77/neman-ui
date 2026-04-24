@@ -73,16 +73,16 @@ function ParamSlider({
         disabled={disabled}
         className={cn(
           "w-full h-1.5 rounded-full appearance-none cursor-pointer bg-border/40",
-          "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:shadow-[var(--shadow-drop-1)]",
+          "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:shadow-[var(--shadow-drop-1)]",
           disabled && "opacity-50 cursor-not-allowed"
         )}
         style={{
           background: disabled
             ? undefined
-            : `linear-gradient(to right, var(--color-brand) ${pct}%, var(--color-border) ${pct}%)`,
+            : `linear-gradient(to right, var(--color-primary) ${pct}%, var(--color-border) ${pct}%)`,
         }}
       />
-      <div className="flex justify-between text-[10px] text-muted-foreground">
+      <div className="flex justify-between text-label-primary text-muted-foreground">
         <span>{param.min}{param.unit}</span>
         <span>{param.max}{param.unit}</span>
       </div>

@@ -198,10 +198,10 @@ function OptionList({
             className={cn(
               "flex w-full items-center gap-3 rounded-[22px] border px-4 py-3 text-left",
               "transition-all duration-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand focus-visible:ring-offset-background",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-background",
               isSelected
-                ? "border-brand/30 bg-brand/[0.06] text-foreground shadow-[var(--shadow-drop-1)]"
-                : "border-border/50 bg-card text-foreground hover:border-foreground/15 hover:bg-fill-subtle/60 hover:shadow-[var(--shadow-drop-1)]",
+                ? "border-foreground/15 bg-fill-medium text-foreground shadow-[var(--shadow-drop-1)]"
+                : "border-border/50 bg-card text-foreground hover:border-foreground/15 hover:bg-fill-medium hover:shadow-[var(--shadow-drop-1)]",
               isReadOnly && "cursor-default",
             )}
           >
@@ -211,12 +211,12 @@ function OptionList({
                 <CheckboxIcon
                   className={cn(
                     "transition-colors duration-200",
-                    isSelected ? "text-brand" : "text-muted-foreground",
+                    isSelected ? "text-primary" : "text-muted-foreground",
                   )}
                   checked={isSelected}
                 />
               ) : isSelected ? (
-                <RadioFilledIcon className="text-brand transition-colors duration-200" />
+                <RadioFilledIcon className="text-primary transition-colors duration-200" />
               ) : (
                 <RadioIcon className="text-muted-foreground transition-colors duration-200" />
               )}
@@ -241,7 +241,7 @@ function OptionList({
 
             {/* Checkmark for receipt state */}
             {isReadOnly && isSelected && (
-              <CheckIcon className="shrink-0 text-brand" />
+              <CheckIcon className="shrink-0 text-primary" />
             )}
           </button>
         )

@@ -306,7 +306,7 @@ function CodeDiff({
               onClick={handleCopyNew}
               aria-label={copied ? "Copied" : "Copy new code"}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-label-primary transition-all duration-200",
+                "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-label-primary transition-all duration-200",
                 copied
                   ? "bg-success/20 text-success"
                   : "text-[var(--code-surface-foreground)]/35 hover:bg-[var(--code-surface-foreground)]/8 hover:text-[var(--code-surface-foreground)]/70"

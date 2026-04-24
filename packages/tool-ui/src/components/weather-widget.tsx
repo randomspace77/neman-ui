@@ -141,7 +141,7 @@ function WeatherWidget({
   return (
     <div
       data-slot="weather-widget"
-      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden", className)}
+      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300", className)}
       {...props}
     >
       {/* Current */}
@@ -149,7 +149,7 @@ function WeatherWidget({
         <div className="flex items-center justify-between">
           <div>
             <h4 className="text-label-primary-bold">{location}</h4>
-            <div className="text-[28px] font-[590] tracking-tight leading-tight">
+            <div className="text-headline-tertiary">
               {formatTemp(currentTemp, units)}
             </div>
             <div className="flex items-center gap-2 text-label-secondary text-muted-foreground">
@@ -157,7 +157,7 @@ function WeatherWidget({
               {feelsLike != null && <span>· Feels like {formatTemp(feelsLike, units)}</span>}
             </div>
           </div>
-          <div className="text-brand opacity-80">
+          <div className="text-foreground opacity-80">
             <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
               {condInfo.svg}
             </svg>
@@ -165,7 +165,7 @@ function WeatherWidget({
         </div>
 
         {/* Stats row */}
-        <div className="flex gap-4 mt-3 text-[12px]">
+        <div className="flex gap-4 mt-3 text-label-primary">
           {high != null && low != null && (
             <span className="text-muted-foreground">
               H: {formatTemp(high, units)} L: {formatTemp(low, units)}
@@ -185,11 +185,11 @@ function WeatherWidget({
               const hCond = conditionIcons[h.condition] ?? conditionIcons.cloudy
               return (
                 <div key={i} className="flex flex-col items-center gap-1 shrink-0">
-                  <span className="text-[11px] text-muted-foreground">{h.time}</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" className="text-brand/70" aria-hidden="true">
+                  <span className="text-label-primary text-muted-foreground">{h.time}</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" className="text-muted-foreground" aria-hidden="true">
                     {hCond.svg}
                   </svg>
-                  <span className="text-[12px] font-[590]">{formatTemp(h.temp, units)}</span>
+                  <span className="text-label-primary-bold">{formatTemp(h.temp, units)}</span>
                 </div>
               )
             })}
@@ -204,15 +204,15 @@ function WeatherWidget({
             {daily.slice(0, 5).map((d, i) => {
               const dCond = conditionIcons[d.condition] ?? conditionIcons.cloudy
               return (
-                <div key={i} className="flex items-center gap-3 text-[13px]">
+                <div key={i} className="flex items-center gap-3 text-label-secondary">
                   <span className="w-10 text-muted-foreground">{d.day}</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" className="text-brand/70 shrink-0" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" className="text-muted-foreground shrink-0" aria-hidden="true">
                     {dCond.svg}
                   </svg>
                   <span className="text-muted-foreground w-10 text-right">{formatTemp(d.low, units)}</span>
                   <div className="flex-1 h-1 rounded-full bg-border/30 relative overflow-hidden">
                     <div
-                      className="absolute left-0 top-0 h-full rounded-full bg-brand"
+                      className="absolute left-0 top-0 h-full rounded-full bg-primary"
                       style={{
                         width: `${((d.high - d.low) / (high! - low! + 1)) * 100}%`,
                         left: `${((d.low - low!) / (high! - low! + 1)) * 100}%`,
