@@ -73,7 +73,7 @@
 }
 
 :root {
-  /* Neman Light theme — warm gray palette with brand blue */
+  /* Neman Light theme — warm gray palette aligned with Manus contrast system */
   --background: #f8f8f7;
   --foreground: #34322d;
   --card: #ffffff;
@@ -85,13 +85,13 @@
   --secondary: #f8f8f7;
   --secondary-foreground: #34322d;
   --muted: #f8f8f7;
-  --muted-foreground: #6e6d69;
+  --muted-foreground: #5e5e5b;
   --accent: #f8f8f7;
   --accent-foreground: #34322d;
   --destructive: #f25a5a;
   --destructive-foreground: #ffffff;
-  --border: #0000000f;
-  --input: #0000000f;
+  --border: #0000001f;
+  --input: #0000001f;
   --ring: #0081f2;
   --radius: 1.375rem;
 
@@ -105,9 +105,9 @@
   --warning: #efa201;
   --warning-foreground: #34322d;
 
-  /* Fill system */
-  --fill-subtle: #37352f0a;
-  --fill-medium: #37352f14;
+  /* Fill system — slightly more opaque for better contrast */
+  --fill-subtle: #37352f0f;
+  --fill-medium: #37352f1f;
 
   /* Chart colors */
   --chart-1: #0081f2;
@@ -123,19 +123,23 @@
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f8f8f7;
   --sidebar-accent-foreground: #34322d;
-  --sidebar-border: #0000000f;
+  --sidebar-border: #0000001f;
   --sidebar-ring: #0081f2;
 
-  /* Code surface (dark-themed regardless of light/dark mode) */
+  /* Code surface */
   --code-surface: #1a1a1a;
   --code-surface-foreground: #ffffffbf;
 
-  /* Shadows */
-  --shadow-card: 0px 12px 32px 0px rgba(0, 0, 0, 0.02);
-  --shadow-drop-1: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-drop-2: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-drop-3: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-drop-4: 0 8px 32px rgba(0, 0, 0, 0.12);
+  /* Shadows — Manus-aligned opaque shadow system */
+  --shadow-XS: #0000000f;
+  --shadow-S: #00000014;
+  --shadow-M: #0000001f;
+  --shadow-L: #0000003d;
+  --shadow-card: 0px 0px 0px 1px var(--shadow-XS), 0px 12px 32px 0px var(--shadow-S);
+  --shadow-drop-1: 0px 1px 2px var(--shadow-S);
+  --shadow-drop-2: 0px 1px 3px var(--shadow-M);
+  --shadow-drop-3: 0px 0px 1.25px var(--shadow-M), 0px 5px 16px var(--shadow-S);
+  --shadow-drop-4: 0px 0px 0px 1px var(--shadow-XS), 0px 8px 32px var(--shadow-M);
 }
 
 .dark {
@@ -150,13 +154,13 @@
   --secondary: #1c1c1c;
   --secondary-foreground: #dadada;
   --muted: #1c1c1c;
-  --muted-foreground: #8a8a8a;
+  --muted-foreground: #acacac;
   --accent: #1c1c1c;
   --accent-foreground: #dadada;
   --destructive: #eb4d4d;
   --destructive-foreground: #ffffff;
-  --border: #ffffff17;
-  --input: #ffffff17;
+  --border: #ffffff1f;
+  --input: #ffffff1f;
   --ring: #1a93fe;
 
   /* Brand blue dark */
@@ -170,8 +174,8 @@
   --warning-foreground: #171717;
 
   /* Fill system dark */
-  --fill-subtle: #ffffff0f;
-  --fill-medium: #ffffff1f;
+  --fill-subtle: #ffffff14;
+  --fill-medium: #ffffff26;
 
   /* Chart colors dark */
   --chart-1: #1a93fe;
@@ -187,19 +191,23 @@
   --sidebar-primary-foreground: #171717;
   --sidebar-accent: #1c1c1c;
   --sidebar-accent-foreground: #dadada;
-  --sidebar-border: #ffffff0f;
+  --sidebar-border: #ffffff1f;
   --sidebar-ring: #1a93fe;
 
   /* Code surface dark */
   --code-surface: #0f0f0f;
   --code-surface-foreground: #ffffffbf;
 
-  /* Shadows dark */
-  --shadow-card: 0px 12px 32px 0px rgba(0, 0, 0, 0.3);
-  --shadow-drop-1: 0 1px 2px rgba(0, 0, 0, 0.15);
-  --shadow-drop-2: 0 2px 4px rgba(0, 0, 0, 0.2);
-  --shadow-drop-3: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-drop-4: 0 8px 32px rgba(0, 0, 0, 0.4);
+  /* Shadows dark — Manus-aligned opaque shadow system */
+  --shadow-XS: #ffffff0a;
+  --shadow-S: #ffffff14;
+  --shadow-M: #ffffff1f;
+  --shadow-L: #ffffff3d;
+  --shadow-card: 0px 0px 0px 1px var(--shadow-XS), 0px 12px 32px 0px var(--shadow-S);
+  --shadow-drop-1: 0px 1px 2px var(--shadow-S);
+  --shadow-drop-2: 0px 1px 3px var(--shadow-M);
+  --shadow-drop-3: 0px 0px 1.25px var(--shadow-M), 0px 5px 16px var(--shadow-S);
+  --shadow-drop-4: 0px 0px 0px 1px var(--shadow-XS), 0px 8px 32px var(--shadow-M);
 }
 
 @layer base {
