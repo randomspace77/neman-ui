@@ -69,7 +69,7 @@ function ItemCarousel({
     return (
       <div
         data-slot="item-carousel"
-        className={cn("rounded-[22px] border border-border/50 bg-card p-4", className)}
+        className={cn("rounded-[22px] border border-border/50 bg-card p-4 shadow-[var(--shadow-card)] transition-all duration-300", className)}
         {...props}
       >
         {title && <h4 className="text-label-primary-bold mb-3">{title}</h4>}
@@ -101,7 +101,7 @@ function ItemCarousel({
   return (
     <div
       data-slot="item-carousel"
-      className={cn("rounded-[22px] border border-border/50 bg-card p-4", className)}
+      className={cn("rounded-[22px] border border-border/50 bg-card p-4 shadow-[var(--shadow-card)] transition-all duration-300", className)}
       {...props}
     >
       {title && <h4 className="text-label-primary-bold mb-3">{title}</h4>}

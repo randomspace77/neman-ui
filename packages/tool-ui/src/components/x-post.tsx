@@ -66,7 +66,7 @@ function XPost({
     <Wrapper
       data-slot="x-post"
       className={cn(
-        "block rounded-[22px] border border-border/50 bg-card overflow-hidden max-w-[480px]",
+        "block rounded-[22px] border border-border/50 bg-card overflow-hidden max-w-[480px] shadow-[var(--shadow-card)] transition-all duration-300",
         url && "hover:border-border transition-colors",
         className
       )}

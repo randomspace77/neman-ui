@@ -74,7 +74,7 @@ function GeoMap({
   return (
     <div
       data-slot="geo-map"
-      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden", className)}
+      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300", className)}
       {...props}
     >
       {title && (

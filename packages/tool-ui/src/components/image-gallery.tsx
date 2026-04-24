@@ -214,7 +214,7 @@ function ImageGallery({
             disabled={isReadOnly}
             className={cn(
               "group relative overflow-hidden rounded-[22px] border border-border/50 bg-card",
-              "shadow-[var(--shadow-drop-1)] transition-all duration-300",
+              "shadow-[var(--shadow-card)] transition-all duration-300",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-background",
               !isReadOnly && "hover:border-foreground/15 hover:shadow-[var(--shadow-drop-2)] hover:scale-[1.02] cursor-pointer",
               isReadOnly && "cursor-default",

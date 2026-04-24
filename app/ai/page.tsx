@@ -82,8 +82,16 @@ import {
   Audio,
   MessageDraft,
   InstagramPost,
+  LinkedInPost,
   XPost,
   ItemCarousel,
+  OptionList,
+  ImageGallery,
+  Video,
+  Citation,
+  Terminal,
+  CodeDiff,
+  ParameterSlider,
 } from "@/packages/tool-ui/src"
 
 function Navbar() {
@@ -748,6 +756,180 @@ function DemoToolUI() {
   )
 }
 
+// ─── Demo: Option List ──────────────────────────────────────────
+
+function DemoOptionList() {
+  const [singleSelected, setSingleSelected] = useState<string[]>([])
+  const [multiSelected, setMultiSelected] = useState<string[]>([])
+
+  return (
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <p className="text-label-secondary text-muted-foreground">Single select</p>
+        <OptionList
+          mode="single"
+          options={[
+            { id: "react", label: "React", description: "A JavaScript library for building user interfaces" },
+            { id: "vue", label: "Vue", description: "The progressive JavaScript framework" },
+            { id: "svelte", label: "Svelte", description: "Cybernetically enhanced web apps" },
+            { id: "angular", label: "Angular", description: "The modern web developer's platform" },
+          ]}
+          selected={singleSelected}
+          onSelectionChange={setSingleSelected}
+        />
+      </div>
+      <div className="space-y-2">
+        <p className="text-label-secondary text-muted-foreground">Multi select</p>
+        <OptionList
+          mode="multi"
+          options={[
+            { id: "ts", label: "TypeScript" },
+            { id: "js", label: "JavaScript" },
+            { id: "py", label: "Python" },
+            { id: "rs", label: "Rust" },
+            { id: "go", label: "Go" },
+          ]}
+          selected={multiSelected}
+          onSelectionChange={setMultiSelected}
+        />
+      </div>
+    </div>
+  )
+}
+
+// ─── Demo: Image & Gallery ──────────────────────────────────────────
+
+function DemoImageGallery() {
+  return (
+    <div className="space-y-6">
+      <ImageGallery
+        images={[
+          { url: "https://picsum.photos/seed/neman-a/600/400", alt: "Dashboard overview" },
+          { url: "https://picsum.photos/seed/neman-b/600/400", alt: "Component library" },
+          { url: "https://picsum.photos/seed/neman-c/600/400", alt: "Dark mode" },
+          { url: "https://picsum.photos/seed/neman-d/600/400", alt: "Mobile view" },
+        ]}
+      />
+    </div>
+  )
+}
+
+// ─── Demo: Video ────────────────────────────────────────────────
+
+function DemoVideo() {
+  return (
+    <div className="max-w-lg">
+      <Video
+        title="Product Demo"
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        poster="https://picsum.photos/seed/video-poster/640/360"
+        duration="0:10"
+      />
+    </div>
+  )
+}
+
+// ─── Demo: Citation ──────────────────────────────────────────────
+
+function DemoCitation() {
+  return (
+    <Citation
+      count={2}
+      citations={[
+        { id: "1", title: "Attention Is All You Need", url: "https://arxiv.org/abs/1706.03762", snippet: "We propose a new simple network architecture, the Transformer, based solely on attention mechanisms." },
+        { id: "2", title: "React: A JavaScript library for building user interfaces", url: "https://react.dev", snippet: "React lets you build user interfaces out of individual pieces called components." },
+      ]}
+    />
+  )
+}
+
+// ─── Demo: Terminal ──────────────────────────────────────────────
+
+function DemoTerminal() {
+  return (
+    <Terminal
+      lines={[
+        { type: "input", text: "npm run build" },
+        { type: "output", text: "  ▲ Next.js 16.2.4" },
+        { type: "output", text: "  Creating an optimized production build..." },
+        { type: "output", text: "✓ Compiled successfully in 9.2s" },
+        { type: "output", text: "  Generating static pages (6/6)" },
+        { type: "output", text: "✓ Finalizing page optimization" },
+        { type: "input", text: "npm run start" },
+        { type: "output", text: "  ▲ Next.js 16.2.4" },
+        { type: "output", text: "  - Local: http://localhost:3000" },
+      ]}
+      workingDirectory="~/projects/neman-ui"
+    />
+  )
+}
+
+// ─── Demo: Code Diff ────────────────────────────────────────────
+
+function DemoCodeDiff() {
+  return (
+    <CodeDiff
+      title="Update component styles"
+      language="tsx"
+      oldCode={`function Button({ children }) {
+  return (
+    <button className="px-4 py-2 bg-blue-500 text-white rounded">
+      {children}
+    </button>
+  );
+}`}
+      newCode={`function Button({ children, variant }) {
+  return (
+    <button className={cn(
+      "px-4 py-2 rounded-full font-[590] transition-all duration-300",
+      variant === "primary" ? "bg-primary text-primary-foreground" : "bg-fill-subtle text-foreground"
+    )}>
+      {children}
+    </button>
+  );
+}`}
+    />
+  )
+}
+
+// ─── Demo: Parameter Slider ─────────────────────────────────────
+
+function DemoParameterSlider() {
+  const [values, setValues] = useState<Record<string, number>>({
+    temperature: 0.7,
+    maxTokens: 2048,
+  })
+
+  return (
+    <ParameterSlider
+      title="Model Parameters"
+      parameters={[
+        { key: "temperature", label: "Temperature", min: 0, max: 2, step: 0.1, defaultValue: 0.7 },
+        { key: "maxTokens", label: "Max Tokens", min: 256, max: 4096, step: 256, defaultValue: 2048 },
+        { key: "topP", label: "Top P", min: 0, max: 1, step: 0.05, defaultValue: 0.95 },
+      ]}
+      values={values}
+      onValuesChange={setValues}
+    />
+  )
+}
+
+// ─── Demo: LinkedIn Post ────────────────────────────────────────
+
+function DemoLinkedInPost() {
+  return (
+    <LinkedInPost
+      authorName="Sarah Chen"
+      authorHeadline="VP of Engineering at TechCorp"
+      content="Excited to announce that our team has just shipped the new Neman UI component library! 22px radius everywhere, beautiful micro-shadows, and fully accessible. This is what happens when design and engineering work in lockstep. #DesignSystems #UIComponents #React"
+      likes={342}
+      comments={47}
+      reposts={23}
+      timestamp="3d"
+    />
+  )
+}
+
 // ─── Demo: Social Posts ──────────────────────────────────────────
 
 function DemoSocialPosts() {
@@ -847,6 +1029,14 @@ export default function AIPage() {
     { id: "social", label: "Social Posts" },
     { id: "draft", label: "Message Draft" },
     { id: "map", label: "Geo Map" },
+    { id: "option-list", label: "Option List" },
+    { id: "gallery", label: "Image Gallery" },
+    { id: "video", label: "Video" },
+    { id: "citation", label: "Citation" },
+    { id: "terminal", label: "Terminal" },
+    { id: "code-diff", label: "Code Diff" },
+    { id: "parameter-slider", label: "Parameters" },
+    { id: "linkedin", label: "LinkedIn" },
     { id: "full", label: "Full Chat" },
   ]
 
@@ -1063,6 +1253,110 @@ export default function AIPage() {
             </div>
             <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <DemoGeoMap />
+            </div>
+          </section>
+
+          {/* Option List */}
+          <section id="option-list">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Option List</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Single and multi-select option lists with keyboard navigation and receipt state.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoOptionList />
+            </div>
+          </section>
+
+          {/* Image Gallery */}
+          <section id="gallery">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Image Gallery</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Image galleries with thumbnail navigation and lightbox-style zoom.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoImageGallery />
+            </div>
+          </section>
+
+          {/* Video */}
+          <section id="video">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Video</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Video player with poster images, playback controls, and duration display.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoVideo />
+            </div>
+          </section>
+
+          {/* Citation */}
+          <section id="citation">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Citation</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Source citations with numbered references, titles, and excerpts.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoCitation />
+            </div>
+          </section>
+
+          {/* Terminal */}
+          <section id="terminal">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Terminal</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Terminal-style output display with command inputs, outputs, and scrollable history.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoTerminal />
+            </div>
+          </section>
+
+          {/* Code Diff */}
+          <section id="code-diff">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Code Diff</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Side-by-side and unified code diffs with syntax highlighting and change annotations.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoCodeDiff />
+            </div>
+          </section>
+
+          {/* Parameter Slider */}
+          <section id="parameter-slider">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">Parameter Slider</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Interactive sliders and selects for adjusting model parameters and settings.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoParameterSlider />
+            </div>
+          </section>
+
+          {/* LinkedIn Post */}
+          <section id="linkedin">
+            <div className="mb-8">
+              <h2 className="text-title-tertiary font-[590] text-foreground">LinkedIn Post</h2>
+              <p className="mt-2 text-body-secondary text-muted-foreground">
+                Render LinkedIn-style social posts with author info, content, and engagement metrics.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <DemoLinkedInPost />
             </div>
           </section>
 

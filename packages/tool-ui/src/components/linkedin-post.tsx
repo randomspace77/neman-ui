@@ -61,7 +61,7 @@ function LinkedInPost({
   return (
     <div
       data-slot="linkedin-post"
-      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden max-w-[520px]", className)}
+      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden max-w-[520px] shadow-[var(--shadow-card)] transition-all duration-300", className)}
       {...props}
     >
       {/* Header */}

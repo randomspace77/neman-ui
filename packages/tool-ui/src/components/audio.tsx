@@ -86,7 +86,7 @@ function Audio({
     <div
       data-slot="tool-audio"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-card p-4",
+        "rounded-[22px] border border-border/50 bg-card p-4 shadow-[var(--shadow-card)] transition-all duration-300",
         className
       )}
       {...props}

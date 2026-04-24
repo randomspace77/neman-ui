@@ -42,7 +42,7 @@ function Image({
   return (
     <div
       data-slot="tool-image"
-      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden", className)}
+      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300", className)}
       {...props}
     >
       <div

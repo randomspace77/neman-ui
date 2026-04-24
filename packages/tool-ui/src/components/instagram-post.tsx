@@ -71,7 +71,7 @@ function InstagramPost({
   return (
     <div
       data-slot="instagram-post"
-      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden max-w-[400px]", className)}
+      className={cn("rounded-[22px] border border-border/50 bg-card overflow-hidden max-w-[400px] shadow-[var(--shadow-card)] transition-all duration-300", className)}
       {...props}
     >
       {/* Header */}

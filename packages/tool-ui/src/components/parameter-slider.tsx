@@ -130,7 +130,7 @@ function ParameterSlider({
     <div
       data-slot="parameter-slider"
       className={cn(
-        "rounded-[22px] border border-border/50 bg-card p-4 space-y-4",
+        "rounded-[22px] border border-border/50 bg-card p-4 space-y-4 shadow-[var(--shadow-card)] transition-all duration-300",
         isReadonly && "opacity-80",
         className
       )}
